@@ -1,0 +1,89 @@
+@import "common/var.styl";
+
+grid-columns=24;
+grid-gutter-width=0;
+
+// mixins for grid system
+
+make-grid-columns()
+    col(index)
+        if index <= grid-columns
+            .{$jd-prefix}-col-{index}
+            .{$jd-prefix}-col-xs-{index}
+            .{$jd-prefix}-col-sm-{index}
+            .{$jd-prefix}-col-md-{index}
+            .{$jd-prefix}-col-lg-{index}
+                position relative
+                min-height 1
+                padding-left (grid-gutter-width / 2)px
+                padding-right (grid-gutter-width / 2)px
+            col(index+1)
+
+        else
+            return
+    col(1)
+
+
+float-grid-columns(class='')
+    col(index)
+        if index <= grid-columns
+            .{$jd-prefix}-col{class}-{index}
+                float left
+                flex 0 0 auto
+            col(index+1)
+
+        else
+            return
+
+    col(1)
+
+
+// lesshint false
+loop-grid-columns(index, class='')
+    if index > 0
+            .{$jd-prefix}-col{class}-{index} {
+                display block
+                width ( index*100 / grid-columns )%
+            }
+            .{$jd-prefix}-col{class}-push-{index} {
+                left ( index*100 / grid-columns )%
+            }
+            .{$jd-prefix}-col{class}-pull-{index} {
+                right ( index*100 / grid-columns )%
+            }
+            .{$jd-prefix}-col{class}-offset-{index} {
+                margin-left ( index*100 / grid-columns )%
+            }
+            .{$jd-prefix}-col{class}-order-{index} {
+                order index
+            }
+            loop-grid-columns((index - 1), class)
+
+    else if index == 0
+            .{$jd-prefix}-col{class}-{index} {
+                display none
+            }
+            .{$jd-prefix}-col-push-{index} {
+                left auto
+            }
+            .{$jd-prefix}-col-pull-{index} {
+                right auto
+            }
+            .{$jd-prefix}-col{class}-push-{index} {
+                left auto
+            }
+            .{$jd-prefix}-col{class}-pull-{index} {
+                right auto
+            }
+            .{$jd-prefix}-col{class}-offset-{index} {
+                margin-left 0
+            }
+            .{$jd-prefix}-col{class}-order-{index} {
+                order 0
+            }       
+
+
+make-grid(class="") {
+  float-grid-columns(class);
+  loop-grid-columns(grid-columns, class);
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@jmfe/jdesign-theme-babel",
+  "version": "1.0.2-8",
+  "description": "JDesign component babel theme.",
+  "main": "lib/index.css",
+  "style": "lib/index.css",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "prepublish": "gulp build"
+  },
+  "keywords": [
+    "react",
+    "theme"
+  ],
+  "license": "MIT",
+  "author": "jincan@jd.com",
+  "homepage": "http://git.jd.com/jmfe-packages/JDesign/theme-babel#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-stylus": "^2.6.0"
+  },
+  "dependencies": {
+    "font-awesome-stylus": "^4.7.1"
+  }
+}

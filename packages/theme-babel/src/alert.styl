@@ -1,0 +1,58 @@
+@import "common/var.styl";
+
+.{$jd-prefix}-alert
+    position relative
+    padding 8px 48px 8px 38px
+    word-wrap: break-word
+    border 1px solid #d2eafb
+    background-color #ecf6fd
+    animation-duration: 0.6s
+
+.{$jd-prefix}-alert--info
+    border 1px solid #CAE2FF
+    background-color #E2EEF9
+    color $infoIconColor
+
+.{$jd-prefix}-alert--success
+    border 1px solid #D4F6E3
+    background-color #EEFCF4
+    color $successIconColor
+
+.{$jd-prefix}-alert--warning
+    border 1px solid #F6E9C9
+    background-color #FFF6E6
+    color $warningIconColor
+
+.{$jd-prefix}-alert--error
+    border 1px solid #FFD5D5
+    background-color #FFF3F3
+    color $errorIconColor
+
+.{$jd-prefix}-alert__icon
+    position absolute
+    left 16px
+    top 10px
+
+.{$jd-prefix}-alert__close
+    position absolute
+    right 20px
+    cursor: pointer
+    color #666666
+    opacity 1.0
+    transform opacity .4 ease
+
+    &:hover
+        opacity 0.6
+
+.{$jd-prefix}-alert__msg
+    font-size 14px
+    color #666666
+    font-family PingFangSC-Regular
+    line-height 20px
+    letter-spacing 0
+    
+
+.{$jd-prefix}-alert__description
+    font-size 12px
+    color #666666
+

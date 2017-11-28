@@ -1,0 +1,18 @@
+{
+  "name": "@jmfe/jdesign-datepicker",
+  "version": "1.0.2-8",
+  "description": "an datepicker component for JD.",
+  "main": "lib/index.js",
+  "keywords": [
+    "jd",
+    "react",
+    "component"
+  ],
+  "peerDependencies": {
+    "react": "~0.14.0 || >=15.0.0",
+    "react-dom": "~0.14.0 || >=15.0.0"
+  },
+  "repository": "http://http://git.jd.com/jmfe-packages/JDesign/tree/master/datepicker",
+  "author": "chan",
+  "license": "MIT"
+}

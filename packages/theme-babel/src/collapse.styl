@@ -1,0 +1,36 @@
+.jd-collapse__item
+  border 1px solid #d9d9d9
+  border-bottom 0
+  background-color #f7f7f7
+
+  &:last-child
+    border-bottom 1px solid #d9d9d9
+
+  .jd-collapse__header
+    display flex
+    line-height 38px
+    padding 0px 16px
+    cursor pointer
+    position relative
+    transition all .3s
+
+    &--disabled
+      cursor not-allowed
+      color: rgba(0, 0, 0, .25);
+
+  .jd-collapse__icon
+    margin-right 10px
+    line-height 38px
+
+  .jd-collapse__content
+    overflow: hidden;
+    color: rgba(0, 0, 0, .65);
+    padding 0px 16px
+    background-color: #fff
+    transition all .3s
+
+    &--inactive
+      height 0px
+
+  .jd-collapse__content-box
+    padding 16px 0px

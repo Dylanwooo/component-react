@@ -1,0 +1,24 @@
+boundary(top=0, right=0, bottom=0, left=0) {
+  top top
+  right right
+  bottom bottom
+  left left
+}
+
+size(w=auto, h=auto) {
+  width w
+  height h
+}
+
+offset(left, top) {
+  top top
+  left left
+}
+
+center() {
+  display block
+  position absolute
+  top 50%
+  left 50%
+  transform translate(-50%,-50%)
+}
