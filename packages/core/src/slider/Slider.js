@@ -44,7 +44,7 @@ class Slider extends React.PureComponent{
     render(){     
        
         const { marks, dots, step, included, max, min, tipFormatter } = this.props;
-
+        const basename = 'jd';
         const position = this.state.position;
         let visible = this.state.visible;
         let dragging = this.state.dragging;
@@ -56,13 +56,13 @@ class Slider extends React.PureComponent{
 
         return (
            
-            <div className="slider" onMouseDown = {this._beginSlider} >
-                <div className="slider__track" 
+            <div className={`${basename}-slider`} onMouseDown = {this._beginSlider} >
+                <div className={`${basename}-slider__track`}
                     style={{width: `${position}%`, 
                         visibility: included? 'visible': 'hidden' }}>
                 </div>
                 <Steps
-                    prefixCls={'slider'}
+                    prefixCls={`${basename}-slider`}
                     marks={marks}
                     dots={dots}
                     step={step}
@@ -78,7 +78,7 @@ class Slider extends React.PureComponent{
                         : this._getValue(position) }
                     visible={ visible || dragging }     
                     > 
-                        <div className="slider__handle" 
+                        <div className={`${basename}-slider__handle`}
                             style={{left: `${position}%` }} 
                             onMouseEnter={() => this._toggleTooltipVisible(true) }
                             onMouseLeave={() => this._toggleTooltipVisible(false) }  
@@ -86,7 +86,7 @@ class Slider extends React.PureComponent{
                         </div>
                 </Tooltip>
                 <Marks
-                    className="slider__mark"
+                    className={`${basename}-slider__mark`}
                     marks={marks}
                     included={included}
                     lowerBound={this._getLowerBound()}

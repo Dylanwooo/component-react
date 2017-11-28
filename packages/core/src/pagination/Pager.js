@@ -6,8 +6,8 @@ const Pager = (props) => {
     const { page, render } = props;
 
     let cls = {
-        'pagination__pager': true,
-        'pagination__pager--active': props.active
+        'jd-pagination__pager': true,
+        'jd-pagination__pager--active': props.active
     };
 
     return (

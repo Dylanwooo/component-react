@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Pager from './Pager';
 
+const basename = 'jd';
+
 function defaulePageRender(number) {
-    return <a className="pagination__number">{number}</a>;
+    return <a className={`${basename}-pagination__number`}>{number}</a>;
 }
 
 function pointsRender() {
-    return (<a className="pagination__points">···</a>);
+    return (<a className={`${basename}-pagination__points`}>···</a>);
 }
 
 class Pagination extends React.PureComponent {
@@ -43,7 +45,7 @@ class Pagination extends React.PureComponent {
         const hasNext = currentPage < totalPage;
 
         let cls = {
-            "pagination": true
+            "jd-pagination": true
         };
         let pagerList =[];
 
@@ -141,7 +143,7 @@ class Pagination extends React.PureComponent {
             <div
                 className={cx(cls)}
                 style={style}>
-                <ul className="pagination__list">
+                <ul className={`${basename}-pagination__list`}>
                     { pagerList }
                     { this._renderTotalPageNum() }
                 </ul>
@@ -154,7 +156,7 @@ class Pagination extends React.PureComponent {
         if (showTotal) {
             return (
                 <li>
-                    <span className="pagination__total">{`共${totalPage}页`}</span>
+                    <span className={`${basename}-pagination__total`}>{`共${totalPage}页`}</span>
                 </li>
             )
         } else {

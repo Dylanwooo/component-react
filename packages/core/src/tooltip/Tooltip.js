@@ -53,7 +53,7 @@ class Tooltip extends React.PureComponent {
 }
 
 Tooltip.defaultProps = {
-    prefixCls: 'tooltip',
+    prefixCls: 'jd-tooltip',
     placement: 'top',
     mask: false
 }

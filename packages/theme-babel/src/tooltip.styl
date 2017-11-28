@@ -1,4 +1,6 @@
-.tooltip__content
+@import "common/var.styl";
+
+.{$jd-prefix}-tooltip__content
     position absolute
     z-index 10000
     font-size 12px
@@ -27,11 +29,11 @@
     &--rightBottom
         padding-left 8px
     
-.tooltip--hidden
+.{$jd-prefix}-tooltip--hidden
     opacity 0
     left: -1000px
 
-.tooltip__arrow
+.{$jd-prefix}-tooltip__arrow
     position absolute
     margin-left -5px
     width 0
@@ -111,7 +113,7 @@
         bottom 8px
 
 
-.tooltip__inner
+.{$jd-prefix}-tooltip__inner
     padding: 8px 10px;
     color: #fff;
     text-align: left;

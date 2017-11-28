@@ -5,8 +5,8 @@ import cx from 'classnames';
 class TabPane extends React.PureComponent {
     render() {
         const { active } = this.props;
-        const classNames = cx('tab-pane', {
-            'tab-pane--active': active
+        const classNames = cx('jd-tab-pane', {
+            'jd-tab-pane--active': active
         });
 
         return (

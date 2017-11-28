@@ -1,4 +1,6 @@
-.notification
+@import "common/var.styl";
+
+.{$jd-prefix}-notification
     position fixed
     z-index 10000
     width 335px
@@ -11,7 +13,7 @@
     &--topRight
         margin-right 24px
    
-.notification__notice
+.{$jd-prefix}-notification__notice
     padding 16px
     box-shadow 0 2px 8px rgba(0,0,0,.2)
     background #fff
@@ -21,26 +23,26 @@
     line-height 1.5
     animation-duration 0.2s
 
-.notification__header
+.{$jd-prefix}-notification__header
     padding-right 24px
     font-size 14px
     color rgba(0,0,0,.85)
     margin-bottom 4px
     line-height 20px
 
-.notification__msg
+.{$jd-prefix}-notification__msg
     font-size 12px
     padding-right 20px
     color rgba(0,0,0,.65)
     word-wrap break-word
 
-.notification__footer
+.{$jd-prefix}-notification__footer
     text-align right
 
-.notification__content--icon
+.{$jd-prefix}-notification__content--icon
     padding-left 48px
 
-.notification__close
+.{$jd-prefix}-notification__close
     position absolute
     right 16px
     top 10px
@@ -52,22 +54,22 @@
     &:hover
         opacity 0.6
 
-.notification__icon--info
+.{$jd-prefix}-notification__icon--info
     position absolute
     left 16px
     color #108ee9
 
-.notification__icon--success
+.{$jd-prefix}-notification__icon--success
     position absolute
     left 16px
     color #00a854
 
-.notification__icon--warning
+.{$jd-prefix}-notification__icon--warning
     position absolute
     left 16px
     color #ffbf00
 
-.notification__icon--error
+.{$jd-prefix}-notification__icon--error
     position absolute
     left 16px
     color #f04134

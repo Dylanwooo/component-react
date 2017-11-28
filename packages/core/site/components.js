@@ -30,14 +30,61 @@ import {
     Table,
     Tabs,
     Tag,
+    TabPane,
     Tooltip,
     Transfer,
     Uploader
 } from '../src'
 // } from '@jmfe/jdesign-core'
-
 import '../../theme-babel/lib/index.css'
 import './index.css'
+
+const { column } = Table;
+const dataSource = [{
+    key: '1',
+    name: '胡彦斌',
+    age: 32,
+    address: '西湖区湖底公园1号'
+}, {
+    key: '2',
+    name: '胡彦祖',
+    age: 42,
+    address: '西湖区湖底公园1号'
+},{
+    key: '3',
+    name: '彭于晏',
+    age: 33,
+    address: '西湖区湖底公园1号'
+}, {
+    key: '4',
+    name: '吴彦祖',
+    age: 42,
+    address: '西湖区湖底公园1号'
+},{
+    key: '5',
+    name: '吴亦凡',
+    age: 32,
+    address: '西湖区湖底公园1号'
+}, {
+    key: '6',
+    name: '小沈阳',
+    age: 42,
+    address: '西湖区湖底公园1号'
+}];
+
+const columns = [{
+    title: '姓名',
+    dataIndex: 'name',
+    key: 'name',
+}, {
+    title: '年龄',
+    dataIndex: 'age',
+    key: 'age',
+}, {
+    title: '住址',
+    dataIndex: 'address',
+    key: 'address',
+}];
 
 export default () => {
 
@@ -315,9 +362,82 @@ export default () => {
                 <Switch></Switch>
             </div>
             {/*<div className='content-border'>*/}
-            {/*<p>可分页表格</p>*/}
-            {/*<PagingTable pageSize={5} totalPage={10} dataSource={dataSource} onPageChange={(current)=>{console.log(current)}}></PagingTable>*/}
+                {/*<p>可分页表格</p>*/}
+                {/*<PagingTable pageSize={5} totalPage={10} dataSource={dataSource} onPageChange={(current)=>{console.log(current)}}></PagingTable>*/}
             {/*</div>*/}
+            <div className='content-border'>
+                <p>弹出确认框</p>
+                <Popconfirm placement="topLeft" title="poptext" onText="ok" cancelText="no">
+                    <button>TL</button>
+                </Popconfirm>
+            </div>
+            <div className='content-border'>
+                <p>popover</p>
+                <Popover title="title" content="content">
+                    <button>click</button>
+                </Popover>
+                <br />
+                <Popover title="title" content="content" trigger="hover">
+                    <button>hover</button>
+                </Popover>
+            </div>
+
+            <div className='content-border'>
+                <p>section</p>
+                <Section description="describtion" showSwitch={true}></Section>
+            </div>
+
+            <div className='content-border'>
+                <p>Slider</p>
+                <Slider min={0} max={100} ></Slider>
+            </div>
+
+            <div className='content-border'>
+                <p>table</p>
+                <Table  ></Table>
+            </div>
+
+            <div className='content-border'>
+                <p>标签</p>
+                <Tag color="cyan">cyan</Tag>
+                <Tag color="#2db7f5">#2db7f5</Tag>
+                <Tag color="#87d068">#87d068</Tag>
+                <Tag color="#108ee9">#108ee9</Tag>
+            </div>
+
+            {/*<div className='content-border'>*/}
+                {/*<p>表格</p>*/}
+                {/*<Table columns={columns} dataSource={dataSource}>*/}
+                    {/*<column title="名字"*/}
+                            {/*dataIndex="name"*/}
+                            {/*key="name">*/}
+                    {/*</column>*/}
+                    {/*<column title="年龄"*/}
+                            {/*dataIndex="age"*/}
+                            {/*key="age">*/}
+                    {/*</column>*/}
+                    {/*<column title="地址"*/}
+                            {/*dataIndex="address"*/}
+                            {/*key="address">*/}
+                    {/*</column>*/}
+                {/*</Table>*/}
+            {/*</div>*/}
+
+            {/*<div className='content-border'>*/}
+                {/*<p>标签页</p>*/}
+                {/*<Tabs>*/}
+                    {/*<TabPane name="Tab 1">*/}
+                        {/*1*/}
+                    {/*</TabPane>*/}
+                    {/*<TabPane name="Tab 2">*/}
+                        {/*2*/}
+                    {/*</TabPane>*/}
+                    {/*<TabPane name="Tab 3">*/}
+                        {/*3*/}
+                    {/*</TabPane>*/}
+                {/*</Tabs>*/}
+            {/*</div>*/}
+
         </div>
     )
 }

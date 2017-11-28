@@ -12,11 +12,12 @@ class Uploader extends React.PureComponent {
 
     render() {
         const {accept, multiple, uploadLabel} = this.props;
+        const basename = 'jd';
         return (
-            <div className="file-upload">
-                <label className="button button--normal button--primary">{uploadLabel}
-                    <form ref="form" className="file-upload__form">
-                        <input onChange={this._onChange.bind(this)} multiple={multiple} type="file" accept={accept} className="file-upload__input"/>
+            <div className={`${basename}-file-upload`}>
+                <label className={`${basename}-button  ${basename}-button--normal ${basename}-button--primary`}>{uploadLabel}
+                    <form ref="form" className={`${basename}-file-upload__form`}>
+                        <input onChange={this._onChange.bind(this)} multiple={multiple} type="file" accept={accept} className={`${basename}-file-upload__input`}/>
                     </form>
                 </label>
             </div>

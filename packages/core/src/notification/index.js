@@ -26,8 +26,8 @@ class Notification extends React.PureComponent{
         const placementStyle = this._getPlacementStyle(placement);
         zIndex = zIndex <= 100 ? zIndex + 1 : 0;
         const noticeStyle = assign(placementStyle, style, {zIndex: 1000 + zIndex});
-        const cls = cx("notification", {
-            [`notification--${placement}`]: placement,
+        const cls = cx("jd-notification", {
+            [`jd-notification--${placement}`]: placement,
         })
         return (
             <div className={cls} style={noticeStyle}>
@@ -40,7 +40,7 @@ class Notification extends React.PureComponent{
         const noticeNodes = this.state.notices.map((notice) => {
             const onRemove = ()=>{ this._remove(notice.key)};
             return (<Notice
-                prefixCls="notification"
+                prefixCls="jd-notification"
                 key={notice.key}
                 type={notice.type}
                 title={notice.title}

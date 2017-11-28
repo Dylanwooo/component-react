@@ -66,7 +66,7 @@ class Transfer extends React.PureComponent {
         const leftActive = targetSelectedKeys.length > 0;
         const rightActive = sourceSelectedKeys.length > 0;
         return (
-            <div className="transfer">
+            <div className="jd-transfer">
                <List
                     dataSource={leftDataSource}
                     checkedKeys={sourceSelectedKeys}
@@ -314,7 +314,7 @@ Transfer.defaultProps = {
     titles: ["", ""],
     clickMode: true,
     drag: false,
-    prefixCls: "transfer",
+    prefixCls: "jd-transfer",
     onItemClick: () => {}
 }
 

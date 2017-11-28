@@ -133,7 +133,7 @@ class Spin extends React.PureComponent {
 }
 
 Spin.defaultProps = {
-    prefixCls: 'spin',
+    prefixCls: 'jd-spin',
     spinning: true
 }
 

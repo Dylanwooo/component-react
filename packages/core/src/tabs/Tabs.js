@@ -12,7 +12,7 @@ class Tabs extends React.Component {
     }
 
     render() {
-        const classNames = cx('tabs', this.props.className);
+        const classNames = cx('jd-tabs', this.props.className);
         return (
             <div className={classNames}>
                 { this._getTabBar() }
@@ -36,7 +36,7 @@ class Tabs extends React.Component {
                 </li>
             );
         });
-        return <ul className="tabbar">{items}</ul>;
+        return <ul className="jd-tabbar">{items}</ul>;
     }
 
     _getTabContent() {

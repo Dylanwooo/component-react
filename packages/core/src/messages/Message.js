@@ -17,10 +17,9 @@ class Message extends React.PureComponent {
     }
 
     render() {
-        const baseName = 'jd-message';
         const {top} = this.props;
         return (
-            <div className="messages" style={{top: top}}>
+            <div className="jd-messages" style={{top: top}}>
                 {this._getNoticeNodes()}
             </div>
         )
@@ -32,7 +31,7 @@ class Message extends React.PureComponent {
                 this._remove(notice.key)
             };
             return (<Notice
-                prefixCls="messages"
+                prefixCls="jd-messages"
                 key={notice.key}
                 type={notice.type}
                 message={notice.message}

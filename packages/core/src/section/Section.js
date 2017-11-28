@@ -46,7 +46,7 @@ class Section extends React.PureComponent {
 }
 
 Section.defaultProps = {
-    prefixCls: 'prop',
+    prefixCls: 'jd-prop',
 }
 
 Section.propTypes = {

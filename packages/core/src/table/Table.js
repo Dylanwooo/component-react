@@ -4,6 +4,7 @@ import cx from 'classnames';
 import TableRow from './TableRow';
 import DropRow from './DropRow';
 
+
 class Table extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -120,7 +121,7 @@ Table.defaultProps = {
     columns: [],
     hideHead: false,
     tableClassName: '',
-    prefixCls: '',
+    prefixCls: 'jd',
     onCellClick: (rowIndex, colIndex) => {
         console.log(`点击了第${rowIndex}行第${colIndex}列`)
     }

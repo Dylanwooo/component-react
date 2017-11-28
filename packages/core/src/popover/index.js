@@ -25,7 +25,7 @@ class Popover extends React.PureComponent {
         const newChildProps = this.newChildProps;
         return (
             <Tooltip 
-              prefixCls="popover"
+              prefixCls="jd-popover"
               overlay={ content }
               visible={ this.state.visible }
               placement={ placement }

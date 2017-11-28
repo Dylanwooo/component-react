@@ -17,8 +17,7 @@ class Move extends React.PureComponent {
     }
 
     render() {
-        const baseName = 'jd-move';
-        const { 
+        const {
             prefixCls,
             controllerRadius,
             moveAreaRadius
@@ -150,7 +149,7 @@ class Move extends React.PureComponent {
 }
 
 Move.defaultProps = {
-    prefixCls: 'move',
+    prefixCls: 'jd-move',
     controllerRadius:7,
     moveAreaRadius:30
 }

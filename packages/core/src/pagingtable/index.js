@@ -6,9 +6,9 @@ class PagingTable extends React.PureComponent {
     render() {
         const props = this.props;
         const {columns, dataSource, rowKey, prefixCls, hideHead, tableClassName, onCellClick} = props;
-
+        const basename = 'jd';
         return (
-            <div className="pagingtable">
+            <div className={`${basename}-pagingtable`}>
                 <Table
                     columns={columns}
                     dataSource={dataSource}

@@ -21,7 +21,7 @@ class Popconfirm extends React.PureComponent {
         newChildProps.onClick = this._showPopconfirm;
         return (
             <Tooltip 
-              prefixCls="popconfirm"
+              prefixCls="jd-popconfirm"
               overlay={ this._getOverlay() }
               visible={ this.state.visible }
               placement={this.props.placement}
@@ -35,7 +35,7 @@ class Popconfirm extends React.PureComponent {
 
     _getOverlay = () => {
         return (
-            <div className="confirm__content">
+            <div className="jd-confirm__content">
                 { this._getMessage() }
                 { this._getFooter() }
             </div>
@@ -45,9 +45,9 @@ class Popconfirm extends React.PureComponent {
     _getMessage = () => {
         const { title } = this.props;
         return (
-            <div className="confirm__innerMessage">
-                <Icon name={'info-circle'} className="confirm__icon" />
-                <div className="confirm__msg">
+            <div className="jd-confirm__innerMessage">
+                <Icon name={'info-circle'} className="jd-confirm__icon" />
+                <div className="jd-confirm__msg">
                     { title }
                 </div>
             </div>
@@ -57,7 +57,7 @@ class Popconfirm extends React.PureComponent {
     _getFooter = () => {
         const { okText, cancelText} = this.props;
         return (
-            <div className={"confirm__footer"}>
+            <div className={"jd-confirm__footer"}>
                 <Button
                 onClick={this._cancelClose}>
                    {cancelText || GENERAL.CANCEL}

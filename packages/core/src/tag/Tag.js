@@ -22,7 +22,7 @@ class Tag extends React.PureComponent {
         const { closing, closed } = this.state;
         const isPresetColor = this._isPresetColor(color);
 
-        const cls = classNames("tag", {
+        const cls = classNames("jd-tag", {
             "animated": true,
             [`tag--${color}`]: isPresetColor,
             [`${animatedOut}`]: closing,
@@ -38,12 +38,12 @@ class Tag extends React.PureComponent {
                 style={tagStyle}
                 onAnimationEnd={this._animatedOut}>
 
-                    <span className="tag__text">
+                    <span className="jd-tag__text">
                         { children }
                     </span>
 
                     { closable ? 
-                    <Icon name="close" className="tag__close-icon" onClick={this._onClose}/>
+                    <Icon name="close" className="jd-tag__close-icon" onClick={this._onClose}/>
                     : null}
             </div>
         )

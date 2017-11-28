@@ -76,7 +76,6 @@ class Sider extends React.PureComponent {
     render(){
         const { children, collapsible, style, collapsedWidth, width, className, trigger } = this.props;
         const { expand, below } = this.state;
-        const basename = 'jd';
         const defaultTriggerDom = this._getTriggerDom();
         const zeroWidthTrigger = this._getZeroWidthTrigger();
         const triggerDom = zeroWidthTrigger || (trigger || defaultTriggerDom);
@@ -86,14 +85,20 @@ class Sider extends React.PureComponent {
             flex: `0 0 ${siderWidth}px`,
             width: `${siderWidth}px`,
             ...style
-        };
+        }
 
-        const siderCls = classNames(`${basename}-layout__sider`, {
-            `${basename}-layout__sider--collapsed`: !expand,
-            `${basename}-layout__sider--has-trigger`: !!trigger,
-            `${basename}-layout__sider--below`: !!below,
-            `${basename}-layout__sider--zero-width` : String(collapsedWidth) === '0'
+        const siderCls = classNames("jd-layout__sider", {
+            "jd-layout__sider--collapsed": !expand,
+            "jd-layout__sider--has-trigger": !!trigger,
+            "jd-layout__sider--below": !!below,
+            "jd-layout__sider--zero-width" : String(collapsedWidth) === '0'
         }, className);
+        // const siderCls = classNames(`${basename}-layout__sider`, {
+        //     `${basename}-layout__sider--collapsed`: !expand,
+        //     `${basename}-layout__sider--has-trigger`: !!trigger,
+        //     `${basename}-layout__sider--below`: !!below,
+        //     `${basename}-layout__sider--zero-width` : String(collapsedWidth) === '0'
+        // }, className);
         return (
             <div className={siderCls} style={divStyle}>
                 { children }
@@ -127,7 +132,7 @@ class Sider extends React.PureComponent {
         }
         
         return (
-            <div className="layout__sider--trigger" onClick={this._onTrigger}>
+            <div className="jd-layout__sider--trigger" onClick={this._onTrigger}>
                 { triggerIcon }
             </div>
         )
@@ -138,7 +143,7 @@ class Sider extends React.PureComponent {
         const { collapsedWidth } = this.props;
         const triggerIcon = collapsedWidth === 0 || collapsedWidth === '0' ?
         (
-            <span onClick={this._onTrigger} className="layout__sider--zero-width-trigger">
+            <span onClick={this._onTrigger} className="jd-layout__sider--zero-width-trigger">
                 <Icon name="bars" />
             </span>
         ) : null
