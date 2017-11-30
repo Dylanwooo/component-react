@@ -1,30 +1,46 @@
 
 .jd-input-wrapper
   position: relative;
-  display: inline-block;
   width: 100%;
+  margin 5px;
 
 .jd-input
   position: relative;
+  background: #fff;
   display: inline-block;
-  padding: 1px;
-  height: 32px;
-  width: 100%;
-  line-height:1.5;
-  color: #d9d9d9;
-  background-color: #ffffff;
-  background-image: none;
+  height: 20px;
+  padding: 6px 11px;
+  border: 1px solid #d9d9d9;
   border-radius: 4px;
+  width: 100%;
+  line-height: 1.5px;
+  font-size: 14px;
+  transition: all .3s;
+  font-family: PingFangSC-Regular;
 
-  &:hover {
-    border: 1px solid #999999;
-  }
-  &:focus {
-    border: 1px solid #5BB4FB
-  }
+.jd-input-false
+  cursor not-allowed
+  background #EDEDED
 
-.jd-input-suffix
-  display: table-cell
+  &:hover
+    border-color #999999
+
+  &:focus
+    border-color #5BB4FB
+    transition: all .3s;
+
+.jd-input-wrapper__not-editable
+    cursor not-allowed
+    background #EDEDED
+
+
+
+
+
+
+
+
+
 
 
 

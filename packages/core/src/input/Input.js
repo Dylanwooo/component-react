@@ -127,7 +127,7 @@ class Input extends (PureComponent || Component) {
                     ref={input => {
                         this.input = input;
                     }}
-                    className={`${prefix}-input`}
+                    className={`${prefix}-input ${prefix}-input-${editable}`}
                     {...inputProps}
                     onKeyDown={this.handleKeyDown}
                 />
