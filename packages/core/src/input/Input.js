@@ -45,11 +45,16 @@ class Input extends (PureComponent || Component) {
         if (onKeyDown) onKeyDown(evt);
     };
 
+    // handleSearch(){
+    //     console.log('to be finished')
+    // }
+
     render() {
         const {
             prefix,
             className,
             type,
+            size,
             width,
             disabled,
             icon,
@@ -58,8 +63,6 @@ class Input extends (PureComponent || Component) {
         const widthStyle = getWidth(width);
         const isTextarea = type.toLowerCase() === 'textarea';
         const editable = !(disabled || readOnly);
-
-        console.log(icon)
 
         const wrapClass = classNames(
             {
@@ -102,7 +105,7 @@ class Input extends (PureComponent || Component) {
 
         //带搜索图标
         if (icon == 'yes') {
-            console.log('helo icon')
+            console.log('helo icon');
             return (
                 <div className={wrapClass} style={widthStyle}>
                     <input
@@ -112,6 +115,7 @@ class Input extends (PureComponent || Component) {
                         className={`${prefix}-input`}
                         {...inputProps}
                         onKeyDown={this.handleKeyDown}
+                        //onSearch={this.handleSearch}
                     />
                     <span className={`${prefix}-input-suffix`}>
                         <Icon name={`search`}/>
@@ -127,13 +131,12 @@ class Input extends (PureComponent || Component) {
                     ref={input => {
                         this.input = input;
                     }}
-                    className={`${prefix}-input ${prefix}-input-${editable}`}
+                    className={`${prefix}-input`}
                     {...inputProps}
                     onKeyDown={this.handleKeyDown}
                 />
             </div>
         );
-
     }
 
 
@@ -151,6 +154,7 @@ Input.propTypes = {
     defaultValue: PropTypes.any,
     onPressEnter: PropTypes.func,
     onChange: PropTypes.func,
+    //onSearch: PropTypes.func,
     autoFocus: PropTypes.bool,
     initSelectionStart: PropTypes.number,
     initSelectionEnd: PropTypes.number,
@@ -163,6 +167,7 @@ Input.defaultProps = {
     readOnly: false,
     prefix: 'jd',
     type: 'text',
+    size: 'default',
     autoFocus: false,
     width: '220',
     autoSelect: false
