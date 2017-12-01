@@ -45,9 +45,10 @@ class Input extends (PureComponent || Component) {
         if (onKeyDown) onKeyDown(evt);
     };
 
-    // handleSearch(){
-    //     console.log('to be finished')
-    // }
+    handleSearch(){
+        console.log('to be finished')
+    }
+
 
     render() {
         const {
@@ -60,6 +61,7 @@ class Input extends (PureComponent || Component) {
             icon,
             readOnly
         } = this.props;
+
         const widthStyle = getWidth(width);
         const isTextarea = type.toLowerCase() === 'textarea';
         const editable = !(disabled || readOnly);
@@ -105,9 +107,8 @@ class Input extends (PureComponent || Component) {
 
         //带搜索图标
         if (icon == 'yes') {
-            console.log('helo icon');
             return (
-                <div className={wrapClass} style={widthStyle}>
+                <span className={wrapClass} style={widthStyle}>
                     <input
                         ref={input => {
                             this.input = input;
@@ -120,7 +121,7 @@ class Input extends (PureComponent || Component) {
                     <span className={`${prefix}-input-suffix`}>
                         <Icon name={`search`}/>
                     </span>
-                </div>
+                </span>
             );
         }
 
@@ -131,7 +132,7 @@ class Input extends (PureComponent || Component) {
                     ref={input => {
                         this.input = input;
                     }}
-                    className={`${prefix}-input`}
+                    className={`${prefix}-input ${prefix}-input--${size}`}
                     {...inputProps}
                     onKeyDown={this.handleKeyDown}
                 />
@@ -154,8 +155,9 @@ Input.propTypes = {
     defaultValue: PropTypes.any,
     onPressEnter: PropTypes.func,
     onChange: PropTypes.func,
-    //onSearch: PropTypes.func,
+    onSearch: PropTypes.func,
     autoFocus: PropTypes.bool,
+    size: PropTypes.oneOf(['small','default', 'large']),
     initSelectionStart: PropTypes.number,
     initSelectionEnd: PropTypes.number,
     autoSelect: PropTypes.bool,

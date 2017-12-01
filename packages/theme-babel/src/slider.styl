@@ -12,16 +12,15 @@
     border-bottom 4px solid #fff
     z-index 1
   
-
 .{$jd-prefix}-slider:hover .{$jd-prefix}-slider__track
-    background-color $primaryColor
+    background-color $primary-normal
 
 .{$jd-prefix}-slider__track
     left 0%
     position absolute
     height 4px
     border-radius 4px
-    background-color darken($primaryColor, -30%)
+    background-color darken($primary-normal, -30%)
     transition background-color 0.3s ease
 
 .{$jd-prefix}-slider__handle
@@ -32,15 +31,15 @@
     height 14px
     cursor pointer
     border-radius 50%
-    border 2px solid darken($primaryColor, -30%)
-    border-color darken($primaryColor, -30%)
+    border 2px solid darken($primary-normal, -30%)
+    border-color darken($primary-normal, -30%)
     background-color #fff
     transition border-color .3s ease
     transform-origin center center
 
     &:hover
         transform scale(1.2)
-        border-color $primaryColor
+        border-color $primary-normal
 
 .{$jd-prefix}-slider-step
     position: absolute;
@@ -67,7 +66,7 @@
       margin-left: -4px;
     
     &--active 
-      border-color: $primaryColor
+      border-color: $primary-normal
     
 .{$jd-prefix}-slider__mark
     position: absolute;

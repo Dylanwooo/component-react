@@ -1,5 +1,173 @@
-@import "common/var.styl";
+@import "./common/var.styl";
 
+@font-face {
+  font-family: 'jdesign-icons';
+  src: url( $font-url /jdesign.woff) format('woff'), /* chrome, firefox */
+          url($font-url /jdesign.tff) format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  font-weight: normal;
+  font-style: normal
+}
 
-$fa-font-path = "http://netdna.bootstrapcdn.com/font-awesome/4.7.0/fonts"
-@import "../node_modules/font-awesome-stylus/index"
+[class^="jd-icon-"], [class*="jd-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'jdesign-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.jd-icon-save:before { content: "\e900"; }
+
+.jd-icon-edit:before { content: "\e901"; }
+
+.jd-icon-menu:before { content: "\e902"; }
+
+.jd-icon-zoom-in:before { content: "\e903"; }
+
+.jd-icon-share:before { content: "\e904"; }
+
+.jd-icon-more:before { content: "\e905"; }
+
+.jd-icon-check-O:before { content: "\e906"; }
+
+.jd-icon-check:before { content: "\e907"; }
+
+.jd-icon-close-O:before { content: "\e908"; }
+
+.jd-icon-close:before { content: "\e909"; }
+
+.jd-icon-plus:before { content: "\e90a"; }
+
+.jd-icon-minus:before { content: "\e90b"; }
+
+.jd-icon-surprise:before { content: "\e90c"; }
+
+.jd-icon-cry:before { content: "\e90d"; }
+
+.jd-icon-calendar:before { content: "\e90e"; }
+
+.jd-icon-delete:before { content: "\e90f"; }
+
+.jd-icon-cloud-upload:before { content: "\e910"; }
+
+.jd-icon-upload:before { content: "\e911"; }
+
+.jd-icon-arrow-up:before { content: "\e912"; }
+
+.jd-icon-setting:before { content: "\e913"; }
+
+.jd-icon-time:before { content: "\e914"; }
+
+.jd-icon-search:before { content: "\e915"; }
+
+.jd-icon-warning-up-O:before { content: "\e916"; }
+
+.jd-icon-warning-down-O:before { content: "\e917"; }
+
+.jd-icon-warning:before { content: "\e918"; }
+
+.jd-icon-picture:before { content: "\e919"; }
+
+.jd-icon-file:before { content: "\e91a"; }
+
+.jd-icon-star-O:before { content: "\e91b"; }
+
+.jd-icon-star:before { content: "\e91c"; }
+
+.jd-icon-arrow-down:before { content: "\e91d"; }
+
+.jd-icon-message:before { content: "\e91e"; }
+
+.jd-icon-smile:before { content: "\e91f"; }
+
+.jd-icon-question:before { content: "\e920"; }
+
+.jd-icon-arrow-right:before { content: "\e921"; }
+
+.jd-icon-d-arrow-right:before { content: "\e922"; }
+
+.jd-icon-arrow-left:before { content: "\e923"; }
+
+.jd-icon-d-arrow-left:before { content: "\e924"; }
+
+.jd-icon-caret-bottom:before { content: "\e925"; }
+
+.jd-icon-caret-left:before { content: "\e926"; }
+
+.jd-icon-caret-right:before { content: "\e927"; }
+
+.jd-icon-caret-top:before { content: "\e928"; }
+
+.jd-icon-check:before { content: "\e929"; }
+
+.jd-icon-d-caret:before { content: "\e92a"; }
+
+//.jd-icon-more:before { content: "\e646"; }
+//
+//.jd-icon-more-outline:before { content: "\e626"; }
+//
+//.jd-icon-phone:before { content: "\e627"; }
+//
+//.jd-icon-phone-outline:before { content: "\e628"; }
+//
+//.jd-icon-picture:before { content: "\e629"; }
+//
+//.jd-icon-picture-outline:before { content: "\e62a"; }
+//
+//.jd-icon-plus:before { content: "\e62b"; }
+//
+//.jd-icon-printer:before { content: "\e62f"; }
+//
+//.jd-icon-rank:before { content: "\e632"; }
+//
+//.jd-icon-refresh:before { content: "\e633"; }
+//
+//.jd-icon-question:before { content: "\e634"; }
+//
+//.jd-icon-remove:before { content: "\e635"; }
+//
+//.jd-icon-share:before { content: "\e636"; }
+//
+//.jd-icon-star-on:before { content: "\e637"; }
+//
+//.jd-icon-setting:before { content: "\e638"; }
+//
+//.jd-icon-circle-check:before { content: "\e639"; }
+//
+//.jd-icon-service:before { content: "\e63a"; }
+//
+//.jd-icon-sold-out:before { content: "\e63b"; }
+//
+//.jd-icon-remove-outline:before { content: "\e63c"; }
+//
+//.jd-icon-star-off:before { content: "\e63d"; }
+//
+//.jd-icon-circle-check-outline:before { content: "\e63e"; }
+//
+//.jd-icon-tickets:before { content: "\e63f"; }
+//
+//.jd-icon-sort:before { content: "\e640"; }
+//
+//.jd-icon-zoom-in:before { content: "\e641"; }
+//
+//.jd-icon-time:before { content: "\e642"; }
+//
+//.jd-icon-view:before { content: "\e643"; }
+//
+//.jd-icon-upload2:before { content: "\e644"; }
+//
+//.jd-icon-zoom-out:before { content: "\e645"; }
+//
+//.jd-icon-loading {
+//  animation: rotating 2s linear infinite;
+//}
+
