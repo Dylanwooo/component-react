@@ -4,17 +4,16 @@
 .{$jd-prefix}-button
   display inline-block
   padding 3px 10px
-  background #fff
+  background $normal-white
   border 1px solid #ddd
-  border-bottom-color darken(#ddd, 10%)
   cursor pointer
-  border-radius 3px
-  font-size 14px
+  height $component-height-base
+  width $btn-width-base
+  border-radius $border-radius-base
+  font-size $font-size-base
+  font-family $font-family
   letter-spacing 1px
-  color #555
-
-    &:hover
-      transform translate(0, -1px);
+  color $normal-2
 
   + .{$jd-prefix}-button
     margin-left 10px
@@ -22,17 +21,49 @@
   &--primary
     background $primary-normal
     border none
+    width auto
     border-bottom 1px solid darken($primary-normal, 10%)
-    color #fff
+    color $normal-white
+    &:hover
+      background $primary-hover
+
+  &--danger
+    width auto
+    color $normal-white
+    background $error-color
+    border none
+    outline none
+
+  &--success
+    width auto
+    color $normal-white
+    background $success-color
+    border none
+    outline none
 
   &--small
-    font-size 12px
+    width auto
+    font-size $font-size-xs
+    height $component-height-sm
 
   &--large
-    font-size 16px
+    width auto
+    font-size $font-size-base
+    height $component-height-lg
 
-  &--disabled
-    cursor not-allowed
-    color: rgba(0, 0, 0, .25);
-    background-color: #f7f7f7;
-    border 1px solid #d9d9d9
+.{$jd-prefix}-button--default
+  &:hover
+    transition: all .3s;
+    border-color $primary-normal
+    color $primary-normal
+  &:focus
+    transition: all .3s;
+    color $primary-click
+    border-color $primary-click
+
+
+.{$jd-prefix}-button--disabled
+  cursor not-allowed
+  color $normal-4 !important
+  background-color $btn-background-disabled !important
+  border 1px solid $btn-border-disabled !important

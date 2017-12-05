@@ -119,22 +119,28 @@
     padding 8px 16px
     color rgba(0,0,0,.65)
 
-.{$jd-prefix}-confirm__icon
+.{$jd-prefix}-icon-warning-down-O
     position absolute
-    color #ffbf00
+    color $warning-color
     font-size 16px
 
 
 .{$jd-prefix}-confirm__innerMessage
     padding 8px 0 16px
-    font-size 12px
+    font-size $font-size-xs
     color rgba(0,0,0,.85)
-    min-height 30px
+    //min-height 30px
     display flex
+    line-height $line-height-base
 
 .{$jd-prefix}-confirm__msg
-    padding-left 20px
+    padding-left 30px
 
 
 .{$jd-prefix}-confirm__footer
     text-align right
+    Button
+        width auto
+        height 22px
+        line-height 18px
+        font-size 12px

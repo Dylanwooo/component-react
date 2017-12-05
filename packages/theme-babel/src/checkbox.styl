@@ -1,61 +1,121 @@
 @import "common/var.styl";
 @import "mixins/mixins.styl";
 
-.{$jd-prefix}-checkbox-wrapper
-  display inline-block
-  cursor pointer
+.jd-checkbox-wrapper
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0;
+  padding: 0;
+  margin-right: 15px;
+  vertical-align: middle;
+  &.jd-checkbox-disabled
+    cursor: not-allowed;
+  &:last-child
+    margin-right: 0;
 
-  .{$jd-prefix}-checkbox
-    position relative
-    display inline-block
-    margin-right 5px
-    size(14px, 14px)
-    line-height 1
-    vertical-align middle
+.jd-checkbox
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  white-space: nowrap;
+  outline: none;
+  vertical-align: middle;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  input
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+  & + span
+    margin-left: 5px;
+    margin-right: 5px;
+    vertical-align: middle;
+    line-height: 16px;
 
-    &__inner
-      position relative
-      size(100%, 100%)
-      border 1px solid #999
-      font-weight normal
-      border-radius 2px
+  .jd-checkbox-inner
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    border: $border-style-base;
+    background: $normal-white;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    &:after
+      box-sizing: content-box;
+      position: absolute;
+      display: block;
+      content: ' ';
+      font-size: 0;
+      top: 3px;
+      left: 2px;
+      width: 6px;
+      height: 3px;
+      border: 2px solid $normal-white;
+      background: transparent;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg) scale(0);
+      transition: all 0.12s ease-in-out;
 
+.jd-checkbox-checked
+  .jd-checkbox-inner
+    border-color: $primary-normal;
+    background: $primary-normal;
+    &:after
+      transform: rotate(-45deg) scale(1);
+
+.jd-checkbox-indeterminate
+  .jd-checkbox-inner
+    border-color: $primary-normal;
+    background: $primary-normal;
+    &:after
+      top: 5px;
+      left: 2px;
+      width: 8px;
+      height: 2px;
+      border: none;
+      background: $normal-white;
+      transform: rotate(0deg);
+
+.jd-checkbox-disabled
+  .jd-checkbox
+    .jd-checkbox-inner
+      opacity: 0.4
+      border-color $border-color-base
+      background-color: $normal-6
       &:after
-        position absolute
-        content ' '
-        offset(4px, 1px)
-        size(5px, 8px)
-        border-right 2px solid $primary-normal
-        border-bottom 2px solid $primary-normal
-        transform rotate(45deg) scale(0)
-        transition all .1s cubic-bezier(.71,-.46,.88,.6)
+        box-sizing: content-box;
+        position: absolute;
+        display: block;
+        content: ' ';
+        font-size: 0;
+        top: 3px;
+        left: 2px;
+        width: 6px;
+        height: 3px;
+        border: 2px solid $border-color-base;
+        background: transparent;
+        border-top: none;
+        border-right: none;
+    & + input[type="checkbox"]
+      cursor: not-allowed
 
-    &--checked
-      .checkbox__inner
-        border-color $primary-normal
-
-        &:after
-          transform rotate(45deg) scale(1)
-
-    &--disabled
-      input[type=checkbox]
-        cursor not-allowed
-
-      .checkbox__inner
-        border-color #ccc
-        background-color #f3f3f3
-
-      &.checkbox--checked
-        .checkbox__inner:after
-          border-color #999
-
-    input[type=checkbox]
-      position absolute
-      boundary()
-      margin 0
-      size(100%, 100%)
-      opacity 0
-
-  span
-    font-size 12px
 

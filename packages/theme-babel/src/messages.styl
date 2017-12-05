@@ -6,6 +6,7 @@
     z-index 10000
     left 50%
     transform translateX(-50%)
+    border-radius $border-radius-base
     
 .{$jd-prefix}-messages--animated
   
@@ -31,8 +32,9 @@
     
 .{$jd-prefix}-messages__msg
     padding 10px
-    font-size 12px
+    font-size $font-size-base
     text-align center
+    font-family $font-family
     background #fff
     display inline-block
     word-wrap: break-word;
@@ -41,19 +43,20 @@
 
 .{$jd-prefix}-messages__icon--info
     margin-right 10px
-    color #108ee9
+    color $primary-normal
 
 .{$jd-prefix}-messages__icon--success
     margin-right 10px
-    color #00a854
+    color $success-color
 
 .{$jd-prefix}-messages__icon--warning
     margin-right 10px
-    color #ffbf00
+    color $warning-color
+    font-size 12px
 
 .{$jd-prefix}-messages__icon--error
     margin-right 10px
-    color #f04134
+    color $error-color
 
 .{$jd-prefix}-messages__icon--loading
     margin-right 10px

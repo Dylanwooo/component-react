@@ -3,8 +3,9 @@
 .{$jd-prefix}-popover__content
     position absolute
     z-index 10000
-    font-size 12px
+    font-size $font-size-xs
     line-height 1.5
+    font-family $font-family
     animation-duration 0.3s
 
     &--left
@@ -106,7 +107,7 @@
         bottom 8px
 
 .{$jd-prefix}-popover__inner
-    min-width 150px
+    padding 6px 14px
     text-align left
     background-color #fff
     border-radius 4px
