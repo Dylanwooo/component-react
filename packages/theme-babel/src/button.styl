@@ -1,19 +1,22 @@
 @import "common/var.styl";
 @import "mixins/mixins.styl";
 
+
 .{$jd-prefix}-button
   display inline-block
-  padding 3px 10px
-  background $normal-white
-  border 1px solid #ddd
+  padding 5px 10px
+  background $btn-background-disabled
+  border 1px solid $border-color-base
   cursor pointer
-  height $component-height-base
-  width $btn-width-base
+  height $component-height-sm
+  min-width $btn-width-base
   border-radius $border-radius-base
-  font-size $font-size-base
+  font-size $font-size-xs
   font-family $font-family
   letter-spacing 1px
+  line-height $line-height-base
   color $normal-2
+
 
   + .{$jd-prefix}-button
     margin-left 10px
@@ -21,11 +24,35 @@
   &--primary
     background $primary-normal
     border none
+    outline none
     width auto
     border-bottom 1px solid darken($primary-normal, 10%)
     color $normal-white
+
+    .{$jd-prefix}-icon
+      color $normal-white
+
     &:hover
       background $primary-hover
+
+  &--ghost
+    background transparent
+    background $normal-white
+    border 1px solid $border-color-base
+
+    &:hover
+      transition: all .3s;
+      border-color $primary-normal
+      color $primary-normal
+      .{$jd-prefix}-icon
+        color $primary-hover
+
+    &:focus
+      transition: all .3s;
+      color $primary-click
+      border-color $primary-click
+      .{$jd-prefix}-icon
+        color $primary-click
 
   &--danger
     width auto
@@ -41,10 +68,10 @@
     border none
     outline none
 
-  &--small
+  &--medium
     width auto
-    font-size $font-size-xs
-    height $component-height-sm
+    font-size $font-size-base
+    height $component-height-base
 
   &--large
     width auto
@@ -67,3 +94,25 @@
   color $normal-4 !important
   background-color $btn-background-disabled !important
   border 1px solid $btn-border-disabled !important
+
+  .{$jd-prefix}-icon
+    color $normal-4 !important
+
+
+.{$jd-prefix}-button--default
+  width auto
+  min-width $btn-width-base
+  &:hover
+    background $normal-white
+    .{$jd-prefix}-icon
+      color $primary-hover
+
+  &:focus
+    .{$jd-prefix}-icon
+      color $primary-click
+
+
+.{$jd-prefix}-icon
+  margin-right 9px
+  color $normal-3
+

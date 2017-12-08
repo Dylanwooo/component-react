@@ -1,29 +1,28 @@
-import React from 'react';
+import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-class TabPane extends React.PureComponent {
+export default class TabPane extends (PureComponent || Component) {
+    static propTypes = {
+        name: PropTypes.string.isRequired,
+        style: PropTypes.object
+    };
+
     render() {
-        const { active } = this.props;
+        const { active, style } = this.props;
         const classNames = cx('jd-tab-pane', {
             'jd-tab-pane--active': active
         });
 
         return (
-            <div className={classNames}>
+            <div className={classNames}
+                 style={style}>
                 {
                     active
                         ? this.props.children
                         : null
-
                 }
             </div>
         );
     }
 }
-
-TabPane.propTypes = {
-    name: PropTypes.string.isRequired
-};
-
-export default TabPane;

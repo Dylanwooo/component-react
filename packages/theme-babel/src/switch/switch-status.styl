@@ -1,0 +1,26 @@
+.jd-switch-checked
+  border-color: $switch-on;
+  background-color: $switch-on;
+
+  &:after
+    left: 32px;
+
+  .jd-switch-inner
+    left: 6px;
+    top: 5px;
+
+.jd-switch-disabled
+  cursor: not-allowed;
+
+  &.jd-switch-checked
+    background: $switch-disabled-checked;
+    border-color: $switch-disabled-checked;
+
+  &:after
+    background: $switch-disabled-after;
+    cursor: not-allowed;
+
+  .jd-switch-inner
+    color: $switch-disabled-after
+
+

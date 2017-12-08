@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Tooltip from '../tooltip/Tooltip';
 import { cloneElement } from 'react';
-import Button from '../button';;
+import Button from '../button';
 import Icon from '../_icon';
 import { GENERAL } from '../_util/text';
 
@@ -46,7 +46,7 @@ class Popconfirm extends React.PureComponent {
         const { title } = this.props;
         return (
             <div className="jd-confirm__innerMessage">
-                <Icon name={'info-circle'} className="jd-confirm__icon" />
+                <Icon name={'info-circle'} className="jd-icon-warning-down-O" />
                 <div className="jd-confirm__msg">
                     { title }
                 </div>
@@ -59,12 +59,12 @@ class Popconfirm extends React.PureComponent {
         return (
             <div className={"jd-confirm__footer"}>
                 <Button
-                onClick={this._cancelClose}>
+                    onClick={this._cancelClose}>
                    {cancelText || GENERAL.CANCEL}
                 </Button>
                 <Button
-                type="primary"
-                onClick={this._okClose}>
+                    type="primary"
+                    onClick={this._okClose}>
                     {okText || GENERAL.CONFIRM}
                 </Button>
             </div>

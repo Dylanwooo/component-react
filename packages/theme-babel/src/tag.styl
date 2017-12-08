@@ -1,0 +1,90 @@
+@import "common/var.styl";
+@import "mixins/mixins.styl";
+
+
+.{$jd-prefix}-tag
+  display: inline-block;
+  line-height: 22px;
+  height: 22px;
+  padding: 0 8px;
+  font-family $font-family
+  border-radius: $border-radius-base;
+  border: $border-style-base
+  background: $tab-background-base;
+  font-size: $font-size-xs;
+  transition: all .3s cubic-bezier(.78,.14,.15,.86);
+  opacity: 1;
+  margin-right: 8px;
+  cursor: pointer;
+  color rgba(0, 0, 0, 0.65);
+  white-space: nowrap;
+  animation-duration .5s
+
+  &:hover
+    opacity .85
+
+  &__close-icon
+    display: inline-block;
+    font-size: 12px;
+    vertical-align middle
+    margin-right 0
+    transform: scale(.83333333) rotate(0deg);
+    zoom: 1;
+    cursor: pointer;
+    margin-left: 3px;
+    transition: all .3s ease;
+    opacity: .66;
+
+    &:hover
+      opacity 1
+
+.{$jd-prefix}-tag--pink
+    color: #f5317f;
+    background: #fdd8e7;
+    border-color: #fdd8e7;
+
+.{$jd-prefix}-tag--red
+    color: #f04134;
+    background: #fcdbd9;
+    border-color: #fcdbd9;
+
+.{$jd-prefix}-tag--orange
+    color: #f56a00;
+    background: #fde3cf;
+    border-color: #fde3cf;
+
+.{$jd-prefix}-tag--green
+    color: #00a854;
+    background: #cfefdf;
+    border-color: #cfefdf;
+
+.{$jd-prefix}-tag--blue
+    color: #108ee9;
+    background: #d2eafb;
+    border-color: #d2eafb;
+
+.{$jd-prefix}-tag--purple
+    color: #7265e6;
+    background: #e4e2fa;
+    border-color: #e4e2fa;
+
+.{$jd-prefix}-tag-checkable
+  background-color: transparent;
+  border-color: transparent;
+
+  &:hover
+    color $primary-normal
+    border-color $primary-normal
+
+  &--checked
+    background-color $primary-normal
+    color #fff
+
+    &:hover
+      color #fff
+
+
+
+
+
+

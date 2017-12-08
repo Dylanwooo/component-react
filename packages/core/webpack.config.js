@@ -7,7 +7,7 @@ var path = require('path');
 module.exports = {
 
     entry: {
-        index: './site/main.js'
+        index: './site/index.js'
     },
 
     output: {
@@ -31,16 +31,11 @@ module.exports = {
                 loader: 'babel'
             },
             {
-                test: /\.css?$/,
-                loader: ExtractTextPlugin.extract('css')
-            },
-            {
                 test: /\.styl$/,
-                loader: ExtractTextPlugin.extract("stylus", "css-loader!stylus-loader")
+                loader: 'style-loader!css-loader!stylus-loader'
             },
         ]
     },
-
     stylus: {
         use: [
             poststylus(['autoprefixer', 'rucksack-css'])

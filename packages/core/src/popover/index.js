@@ -48,14 +48,14 @@ class Popover extends React.PureComponent {
             newChildProps.onMouseOut = this._hidePopover;
         }
         return newChildProps;
-    }
+    };
 
     _showPopover = (event) => {
     
         this.setState({
             visible: true
         })
-    }
+    };
 
     _hidePopover = (event) => {
         this.setState({

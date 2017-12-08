@@ -17,6 +17,7 @@ class Message extends React.PureComponent {
     }
 
     render() {
+        const baseName = 'jd-message';
         const {top} = this.props;
         return (
             <div className="jd-messages" style={{top: top}}>

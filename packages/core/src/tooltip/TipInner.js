@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
 import domAlign from 'dom-align';
+import classnames from 'classnames';
 import contains from 'rc-util/lib/Dom/contains';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import getPlacements from './Placements';
 import Mask from '../_mask';
-import cx from 'classnames';
 
 function buffer(fn, ms) {
   let timer;
@@ -56,8 +56,8 @@ class TipInner extends React.PureComponent {
                 animatedOut: this.animatedOut
             });
         } else {
+            this._forceAlign();
             if(this.props.visible !== nextProps.visible) {
-                this._forceAlign();
                 this.setState({
                     animatedOut: '',
                 });
@@ -109,7 +109,7 @@ class TipInner extends React.PureComponent {
         const { prefixCls, visible, mask } = this.props;
         const { placementCls } = this.state;
         
-        const contentCls = cx(`${prefixCls}__content`, {
+        const contentCls = classnames(`${prefixCls}__content`, {
             'animated': true,
             [`${this.animatedIn}`]:  visible,
             [`${this.state.animatedOut}`]: true,

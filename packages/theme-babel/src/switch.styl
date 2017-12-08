@@ -1,33 +1,4 @@
-@import "common/var.styl";
-@import "mixins/mixins.styl";
-
-.{$jd-prefix}-switch
-  position relative
-  height 20px
-  width @height * 2
-  background grey
-  border-radius (@height / 2)
-  padding 1px
-  overflow hidden
-  transition all .2s linear
-  cursor pointer
-
-  &:after
-    display block
-    content ' '
-    width 50%
-    height 100%
-    background #eee
-    border-radius 50%
-    transition all .2s linear
-    box-shadow 0 0 1px #333
-
-  span
-    color #fff
-    font-size 10px
-
-  &--on
-    background $primary-normal
-
-    &:after
-      transform translate(100%, 0)
+@import "./switch/switch-variable.styl";
+@import './switch/switch.styl';
+@import './switch/switch-size.styl';
+@import './switch/switch-status.styl';

@@ -45,7 +45,7 @@ class Panel extends React.PureComponent {
 
                     <Icon
                         className="jd-collapse__icon"
-                        name={ active ? "angle-down" : "angle-right"}
+                        name={ active ? "caret-bottom" : "caret-right"}
                     />
 
                     { typeof renderHeader === 'function' ? renderHeader() : renderHeader }

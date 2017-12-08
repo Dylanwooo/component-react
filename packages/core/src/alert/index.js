@@ -59,16 +59,16 @@ class Alert extends React.PureComponent {
             let iconName;
             switch (type.toLowerCase()) {
                 case 'info':
-                    iconName = 'info-circle';
+                    iconName = 'warning-up-O';
                     break;
                 case 'success':
-                    iconName = 'check-circle-o';
+                    iconName = 'check-O';
                     break;
                 case 'warning':
-                    iconName = 'warning';
+                    iconName = 'warning-down-O';
                     break;
                 case 'error':
-                    iconName = 'window-close';
+                    iconName = 'close-O';
                     break;
                 default:
                     break;
@@ -105,7 +105,7 @@ class Alert extends React.PureComponent {
         this.setState({
             animatedOut: this.animatedOut
         })
-    }
+    };
 
     _animatedOut = (e) => {
         const {onClose} = this.props;

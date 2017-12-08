@@ -17,6 +17,7 @@ class Move extends React.PureComponent {
     }
 
     render() {
+        const baseName = 'jd-move';
         const {
             prefixCls,
             controllerRadius,
@@ -48,7 +49,7 @@ class Move extends React.PureComponent {
                             height: controllerSize
                         }}
                         ref='controller'>
-                        <Icon name='arrows' className={`${prefixCls}__control-icon`} />
+                        <Icon name='plus' className={`${prefixCls}__control-icon`} />
                     </div>
                 </DraggableCore>
             </div>

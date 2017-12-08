@@ -9,7 +9,7 @@ class CheckableTag extends React.PureComponent {
     }
 
     render(){
-        const { prefixCls = 'tag', className, checked, children } = this.props;
+        const { prefixCls = 'jd-tag', className, checked, children } = this.props;
         const cls = classNames(prefixCls, {
             [`${prefixCls}-checkable`]: true,
             [`${prefixCls}-checkable--checked`]: checked,
@@ -27,6 +27,7 @@ class CheckableTag extends React.PureComponent {
         if (onChange) {
             onChange(!checked);
         }
+        //this.setState({checked});
     }
 }
 

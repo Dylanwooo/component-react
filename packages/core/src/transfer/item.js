@@ -4,7 +4,7 @@ import cx from 'classnames';
 import { DragSource } from 'react-dnd';
 
 import Icon from '../_icon';
-import Checkbox from '../_checkbox';
+import Checkbox from '../checkbox/index';
 
 const TransferItemSource = {
     beginDrag(props, monitor, component) {

@@ -18,13 +18,13 @@ class Tag extends React.PureComponent {
     }
 
     render(){
-        const { children, color, closable, style } = this.props
+        const { children, color, closable, style } = this.props;
         const { closing, closed } = this.state;
         const isPresetColor = this._isPresetColor(color);
 
         const cls = classNames("jd-tag", {
             "animated": true,
-            [`tag--${color}`]: isPresetColor,
+            [`jd-tag--${color}`]: isPresetColor,
             [`${animatedOut}`]: closing,
         });
 
@@ -36,6 +36,7 @@ class Tag extends React.PureComponent {
             <div 
                 className={cls} 
                 style={tagStyle}
+                onClick={this._onClick.bind(this)}
                 onAnimationEnd={this._animatedOut}>
 
                     <span className="jd-tag__text">
@@ -53,6 +54,11 @@ class Tag extends React.PureComponent {
 
     _isPresetColor(color) {
         return /^(pink|red|yellow|orange|green|blue|purple)(-inverse)?$/.test(color);
+    }
+
+    _onClick(e) {
+        if (this.props.onClick)
+            this.props.onClick(e);
     }
 
     _onClose = (e) => {
@@ -79,7 +85,7 @@ class Tag extends React.PureComponent {
 
 Tag.defaultProps = {
 
-}
+};
 
 Tag.propTypes = {
     /**
@@ -106,6 +112,12 @@ Tag.propTypes = {
      * 标签是否可以关闭
      */
     closable: PropTypes.bool,
+    /**
+     * [onClick description]
+     * @type {[function]}
+     * 点击事件
+     */
+    onClicK: PropTypes.func
 
 }
 

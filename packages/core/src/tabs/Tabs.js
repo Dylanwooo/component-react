@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import TabPane from './TabPane'
 
-class Tabs extends React.Component {
+
+export default class Tabs extends (PureComponent || Component) {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,7 +11,22 @@ class Tabs extends React.Component {
         };
     }
 
+    static propTypes = {
+        activeKey: PropTypes.number,
+        className: PropTypes.string,
+        onChange: PropTypes.func,
+        onBeforeChange: PropTypes.func,
+        style: PropTypes.object,
+        type: PropTypes.string
+    };
+
+    static defaultProps = {
+        activeKey: 0,
+        type: 'item'
+    };
+
     render() {
+
         const classNames = cx('jd-tabs', this.props.className);
         return (
             <div className={classNames}>
@@ -22,20 +37,24 @@ class Tabs extends React.Component {
     }
 
     _getTabBar() {
+        const { style,type } = this.props;
+
         const items = [];
         React.Children.forEach(this.props.children, (child, idx) => {
-            const classNames = cx('tabbar__item', {
-                'tabbar__item--active': idx == this.state.activeKey
-            });
+            const classNames = cx(this.props.type === 'item'?'jd-tabbar__item':`jd-tabbar__${type}`
+                ,idx === this.state.activeKey ? `jd-tabbar__${type}--active`:'' );
+
             items.push(
                 <li
                     className={classNames}
+                    style={style}
                     key={idx}
                     onClick={this._onTabClick.bind(this, idx, child.props.name)}>
                     {child.props.name}
                 </li>
             );
         });
+
         return <ul className="jd-tabbar">{items}</ul>;
     }
 
@@ -65,18 +84,5 @@ class Tabs extends React.Component {
         if (this.props.onChange) this.props.onChange(key);
     }
 }
+export { default as TabPane } from './TabPane'
 
-Tabs.defaultProps = {
-    activeKey: 0
-};
-
-Tabs.propTypes = {
-    activeKey: PropTypes.number,
-    className: PropTypes.string,
-    onChange: PropTypes.func,
-    onBeforeChange: PropTypes.func
-};
-
-
-
-export default Tabs;

@@ -1,7 +1,7 @@
 import Alert from './alert/index';
 import Anchor from './_anchor/index';
 import Button from './button/index';
-import Checkbox from './_checkbox/index';
+import Checkbox from './checkbox/index';
 import Popconfirm from './popconfirm/index';
 import Icon from './_icon/index';
 import Mask from './_mask/index';
@@ -9,6 +9,7 @@ import Messages from './messages/Message';
 import Modal from './modal/index';
 import Confirm from './confirm/index';
 import Notification from './notification/index';
+import Input from './input/index';
 import Spin from './spin/index';
 import Switch from './_switch/index';
 import Table from './table/index';
@@ -21,7 +22,6 @@ import Collapse from './collapse/index';
 import Popover from './popover/index';
 import Tag from './tag/index';
 import Layout from './layout/index';
-import RawHtml from './_rawhtml/index';
 import Grid from './grid/index';
 import Section from './section/Section';
 import Pagination from './pagination/index';
@@ -42,6 +42,7 @@ export {
     ErrorBoundary,
     Grid,
     Icon,
+    Input,
     Layout,
     Mask,
     Messages,
@@ -53,7 +54,6 @@ export {
     PagingTable,
     Popconfirm,
     Popover,
-    RawHtml,
     Section,
     Slider,
     Spin,

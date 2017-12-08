@@ -121,7 +121,7 @@ class Cascader extends React.PureComponent {
                 { clearIcon }
 
                 <Icon 
-                    name={ popupVisible ? "chevron-up" : "chevron-down"} 
+                    name={ popupVisible ? "arrow-up" : "arrow-down"}
                     className="jd-cascader-picker--arrow" />
             </span>
         )
