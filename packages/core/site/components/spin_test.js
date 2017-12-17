@@ -2,18 +2,13 @@ import React from 'react';
 import '../index.css'
 import {Alert, Spin, Switch} from '../../src';
 
-export default class SpinTest extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            loading: false
-        }
-    }
+export default class App extends React.Component {
+
+    state = {loading: false};
 
     toggle = (value) => {
         this.setState({loading: value})
-    }
-
+    };
     render() {
         return (
             <div className="content-border">
@@ -24,7 +19,7 @@ export default class SpinTest extends React.Component {
                            type="info"/>
                 </Spin>
                 <div style={{marginTop: 16}}>
-                    loading state: <Switch on={this.state.loading} onChange={this.toggle}/>
+                    loading state: <Switch checked={this.state.loading} onChange={this.toggle}/>
                 </div>
             </div>
         )

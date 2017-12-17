@@ -1,17 +1,21 @@
 @import "common/var.styl";
+@import "mixins/mixins.styl";
 
 .{$jd-prefix}-alert
     position relative
-    padding 8px 48px 8px 38px
+    padding 8px 46px
     word-wrap: break-word
     border 1px solid #d2eafb
     background-color #ecf6fd
     animation-duration: 0.6s
+    box-sizing border-box
+    height auto
+    border-radius $border-radius-base
 
 .{$jd-prefix}-alert--info
     border 1px solid #CAE2FF
     background-color #E2EEF9
-    color $info-color
+    color $primary-normal
 
 .{$jd-prefix}-alert--success
     border 1px solid #D4F6E3
@@ -36,6 +40,9 @@
 .{$jd-prefix}-alert__close
     position absolute
     right 20px
+    top 12px
+    font-size $font-size-alert-close
+    text-align center
     cursor: pointer
     color #666666
     opacity 1.0
@@ -44,13 +51,13 @@
     &:hover
         opacity 0.6
 
+
 .{$jd-prefix}-alert__msg
     font-size 14px
     color #666666
-    font-family PingFangSC-Regular
+    font-family $font-family
     line-height 20px
     letter-spacing 0
-    
 
 .{$jd-prefix}-alert__description
     font-size 12px

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../_icon'
 
-class Alert extends React.PureComponent {
+export default class Alert extends (PureComponent || Component) {
     constructor(props) {
         super(props);
         const {animatedName} = props;
@@ -11,6 +11,49 @@ class Alert extends React.PureComponent {
         this.state = {
             animatedOut: ''
         }
+    }
+
+    static propTypes = {
+        prefix: PropTypes.string,
+        /**
+         * 指定警告提示的样式
+         *有四种选择 success、info、warning、error
+         */
+        type: PropTypes.string,
+        /**
+         * 是否显示关闭按钮
+         */
+        closable: PropTypes.bool,
+        /**
+         * 关闭时触发的回调函数
+         */
+        onClose: PropTypes.func,
+        /**
+         * 自动关闭
+         */
+        duration: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        /**
+         * 样式
+         */
+        style: PropTypes.object,
+        /**
+         * 警告提示内容
+         */
+        message: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
+        /**
+         * 警告提示的辅助性文字介绍
+         */
+        description: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+        /**
+         * 动画名称
+         */
+        animatedName: PropTypes.string
+
+    };
+    static defaultProps = {
+        closable: true,
+        animatedName: 'fade',
+        prefix: 'jd'
     }
 
     componentDidMount() {
@@ -30,31 +73,8 @@ class Alert extends React.PureComponent {
             this._animatedOutFunc = null
         }
     }
-
-    render() {
-        const baseName = 'jd-alert';
-        const {type, message, style} = this.props;
-        const cls = `${baseName} ${baseName}--${type} animated ${this.animatedIn} ${this.state.animatedOut}`;
-        return (
-            <div>
-                <div className={cls}
-                     style={style}
-                     onAnimationEnd={this._animatedOut}>
-                    {this._getCloseIcon()}
-                    {this._getIconType()}
-                    <div className="jd-alert__msg-wrap">
-                        <div className="jd-alert__msg">
-                            {message}
-                        </div>
-                        {this._getDescription()}
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
     _getIconType = () => {
-        const {type} = this.props;
+        const {type,prefix} = this.props;
         if (type) {
             let iconName;
             switch (type.toLowerCase()) {
@@ -74,16 +94,16 @@ class Alert extends React.PureComponent {
                     break;
             }
             if (iconName) {
-                return <Icon name={iconName} className="jd-alert__icon"/>
+                return <Icon name={iconName} className={`${prefix}-alert__icon`}/>
             }
         }
     }
 
     _getCloseIcon = () => {
-        const {closable} = this.props;
+        const {closable,prefix} = this.props;
         if (closable) {
             return (
-                <a className="jd-alert__close" onClick={this._handleClose}>
+                <a className={`${prefix}-alert__close`} onClick={this._handleClose}>
                     <Icon name="close"/>
                 </a>
             )
@@ -91,10 +111,10 @@ class Alert extends React.PureComponent {
     }
 
     _getDescription = () => {
-        const {description} = this.props;
+        const {description,prefix} = this.props;
         if (description) {
             return (
-                <div className="jd-alert__description">
+                <div className={`${prefix}-alert__description`}>
                     {description}
                 </div>
             )
@@ -118,48 +138,31 @@ class Alert extends React.PureComponent {
             }
         }
     }
+
+    render() {
+        const {type, message, style, prefix} = this.props;
+        const baseName = `${prefix}-alert`;
+        const cls = `${baseName} ${baseName}--${type} animated ${this.animatedIn} ${this.state.animatedOut}`;
+        return (
+            <div>
+                <div className={cls}
+                     style={style}
+                     onAnimationEnd={this._animatedOut}>
+                    {this._getCloseIcon()}
+                    {this._getIconType()}
+                    <div className={`${prefix}-alert__msg-wrap`}>
+                        <div className={`${prefix}-alert__msg`}>
+                            {message}
+                        </div>
+                        {this._getDescription()}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
 }
 
-Alert.defaultProps = {
-    closable: true,
-    animatedName: 'fade',
-}
 
-Alert.propTypes = {
-    /**
-     * 指定警告提示的样式
-     *有四种选择 success、info、warning、error
-     */
-    type: PropTypes.string,
-    /**
-     * 是否显示关闭按钮
-     */
-    closable: PropTypes.bool,
-    /**
-     * 关闭时触发的回调函数
-     */
-    onClose: PropTypes.func,
-    /**
-     * 自动关闭
-     */
-    duration: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    /**
-     * 样式
-     */
-    style: PropTypes.object,
-    /**
-     * 警告提示内容
-     */
-    message: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
-    /**
-     * 警告提示的辅助性文字介绍
-     */
-    description: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-    /**
-     * 动画名称
-     */
-    animatedName: PropTypes.string
 
-};
 
-export default Alert;

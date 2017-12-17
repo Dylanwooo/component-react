@@ -3,9 +3,11 @@ import React, { Component, PureComponent } from 'react';
 import CheckBoxTest from './components/checkbox_test';
 import CheckBoxGroupTest from './components/checkboxGroup_test';
 import SwitchTest from './components/switch_test';
-import SpinTest from './components/spin_test'
-import CheckableTagTest from './components/checkableTag_test'
-import EditableTagGroup from './components/editableTagGroup_test'
+import SpinTest from './components/spin_test';
+import RadioTest from './components/radio_test';
+import CheckableTagTest from './components/checkableTag_test';
+import EditableTagGroup from './components/editableTagGroup_test';
+import DropdownTest from './components/dropdown_test';
 
 import {
     Alert,
@@ -40,7 +42,8 @@ import {
     Tag,
     Tooltip,
     Transfer,
-    Uploader
+    Uploader,
+    DropDown
 } from '../src'
 // } from '@jmfe/jdesign-core'
 /*test from node_modules*/
@@ -53,35 +56,35 @@ export default () => {
     const {TabPane} = Tabs;
     const options = [{
         value: '浙江',
-        label: 'zhejiang',
+        label: '浙江',
         children: [{
             value: '杭州',
-            label: 'Hangzhou',
+            label: '杭州',
             children: [{
                 value: '西湖',
-                label: 'west lake'
+                label: '西湖'
             }]
         }]
     }, {
         value: '湖北',
-        label: 'hubei',
+        label: '湖北',
         children: [{
             value: '杭州',
-            label: 'Hangzhou',
+            label: '武汉',
             children: [{
                 value: '西湖',
-                label: 'west lake'
+                label: '黄鹤楼'
             }]
         }]
     }, {
         value: '湖南',
-        label: 'hunan',
+        label: '湖南',
         children: [{
             value: '杭州',
-            label: 'Hangzhou',
+            label: '长沙',
             children: [{
                 value: '西湖',
-                label: 'west lake'
+                label: '坡子街'
             }]
         }]
     }];
@@ -170,19 +173,19 @@ export default () => {
     }
 
     function onBtnInfoMsg() {
-        Messages.info('This is a normal message');
+        Messages.info('这是一条提示消息');
     }
 
     function onBtnSuccessMsg() {
-        Messages.success('This is a success message');
+        Messages.success('这是一条正确消息');
     }
 
     function onBtnWarningMsg() {
-        Messages.warning('This is a warning message');
+        Messages.warning('这是一条注意消息');
     }
 
     function onBtnErrorMsg() {
-        Messages.error('This is a error message');
+        Messages.error('这是一条错误消息');
     }
 
     function onStopDrag() {
@@ -227,19 +230,25 @@ export default () => {
     return (
         <div>
             <div className='content-border'>
+                <p>RadioTest</p>
+                <RadioTest/>
+            </div>
+            <div className='content-border'>
                 <p>SwitchTest</p>
                 <SwitchTest/>
             </div>
-
             <div className='content-border'>
                 <p>弹出框</p>
-                <Alert message="Alert for success" type="success"></Alert>
-                <Alert message="Alert for information" type="info"></Alert>
-                <Alert message="Alert for warning" type="warning"></Alert>
-                <Alert message="Alert for error occuring" type="error"></Alert>
+                <Alert message="恭喜！你提交的信息已审核通过，如有问题，请联系客服" type="success"></Alert>
+                <br/>
+                <Alert message="您好！欢迎使用新版，我已增加多模块" type="info"></Alert>
+                <br/>
+                <Alert message="系统将于10月10日下午18:30-19:30进行升级，请注意保存" type="warning"></Alert>
+                <br/>
+                <Alert message="系统信息错误，请稍后再试！" type="error"></Alert>
+                <br/>
                 <Alert message="Alert for default occuring"></Alert>
             </div>
-
             <div className='content-border'>
                 <p>连接</p>
                 <Anchor mode="blank" onClick={() => {}} to="editor"><Button>点我</Button></Anchor>
@@ -285,8 +294,8 @@ export default () => {
 
             <div className='content-border'>
                 <p>级联选择</p>
-                <Cascader placeholder="默认选项" options={options} placemenmnt="bottomLeft"></Cascader>
-                <Input type="textarea"/>
+                <Cascader placeholder="请选择" options={options} placemenmnt="bottomLeft"></Cascader>
+                <Cascader style={{width:500}} placeholder="请选择" options={options} placemenmnt="bottomLeft"></Cascader>
             </div>
 
             <div className='content-border'>
@@ -307,13 +316,25 @@ export default () => {
             <div className='content-border'>
                 <p>折叠面板</p>
                 <Collapse defaultActiveKey={['1']} onChange={callback}>
-                    <Panel header="This is panel header 1" key="1">
+                    <Panel renderHeader="This is panel header 1" key="1">
                         <p>{text}</p>
                     </Panel>
-                    <Panel header="This is panel header 2" key="2">
+                    <Panel renderHeader="This is panel header 2" key="2">
                         <p>{text}</p>
                     </Panel>
-                    <Panel header="This is panel header 3" key="3" disabled>
+                    <Panel renderHeader="This is panel header 3" key="3" disabled>
+                        <p>{text}</p>
+                    </Panel>
+                </Collapse>
+                <p>accordion</p>
+                <Collapse accordion>
+                    <Panel renderHeader="This is panel header 1" key="1">
+                        <p>{text}</p>
+                    </Panel>
+                    <Panel renderHeader="This is panel header 2" key="2">
+                        <p>{text}</p>
+                    </Panel>
+                    <Panel renderHeader="This is panel header 3" key="3" disabled>
                         <p>{text}</p>
                     </Panel>
                 </Collapse>
@@ -423,10 +444,15 @@ export default () => {
             {/*</div>*/}
             <div className='content-border'>
                 <p>弹出确认框</p>
-                <Popconfirm placement="topLeft" title="确定要点击我？" onText="ok" cancelText="no">
-                    <button>TL</button>
+                <Popconfirm title="确定要点击我？" okText="ok" cancelText="no" animatedName="fade">
+                    <Button>TL</Button>
+                </Popconfirm>
+                <br/>
+                <Popconfirm palcement="topRight" title="确定要删除这条信息吗？" okText="确定" cancelText="取消">
+                    <Button>删除</Button>
                 </Popconfirm>
             </div>
+
             <div className='content-border'>
                 <p>popover</p>
                 <Popover title="title" content="这是一段很长很长很长的文字">
@@ -434,7 +460,7 @@ export default () => {
                 </Popover>
                 <br />
                 <Popover title="title" content="我也是一段很长很长的文字" trigger="hover">
-                    <span>hover</span>
+                    <span style={{color:'#209CFF'}}>悬浮气泡</span>
                 </Popover>
             </div>
 
@@ -472,25 +498,11 @@ export default () => {
                 <p>EditableTagGroup</p>
                 <EditableTagGroup/>
             </div>
-
+            <div className="content-border">
+                <DropdownTest/>
+            </div>
             <SpinTest />
-            {/*<div className='content-border'>*/}
-                {/*<p>表格</p>*/}
-                {/*<Table columns={columns} dataSource={dataSource}>*/}
-                    {/*<column title="名字"*/}
-                            {/*dataIndex="name"*/}
-                            {/*key="name">*/}
-                    {/*</column>*/}
-                    {/*<column title="年龄"*/}
-                            {/*dataIndex="age"*/}
-                            {/*key="age">*/}
-                    {/*</column>*/}
-                    {/*<column title="地址"*/}
-                            {/*dataIndex="address"*/}
-                            {/*key="address">*/}
-                    {/*</column>*/}
-                {/*</Table>*/}
-            {/*</div>*/}
+
             <div className='content-border'>
                 <p>标签页</p>
                 <Tabs>
@@ -538,6 +550,13 @@ export default () => {
                     </TabPane>
                 </Tabs>
             </div>
+
+            <div className="content-border">
+                <Tooltip title="prompt text">
+                    <span>提示文字.</span>
+                </Tooltip>
+            </div>
+
         </div>
     )
 }

@@ -1,35 +1,37 @@
-import Alert from './alert/index';
-import Anchor from './_anchor/index';
-import Button from './button/index';
-import Checkbox from './checkbox/index';
-import Popconfirm from './popconfirm/index';
-import Icon from './_icon/index';
-import Mask from './_mask/index';
-import Messages from './messages/Message';
-import Modal from './modal/index';
-import Confirm from './confirm/index';
-import Notification from './notification/index';
-import Input from './input/index';
-import Spin from './spin/index';
-import Switch from './_switch/index';
-import Table from './table/index';
-import Tabs from './tabs/index';
-import Slider from './slider/Slider';
-import Modalless from './modalless/index';
-import Cascader from './cascader/Cascader';
-import Tooltip from './tooltip/index';
-import Collapse from './collapse/index';
-import Popover from './popover/index';
-import Tag from './tag/index';
-import Layout from './layout/index';
-import Grid from './grid/index';
-import Section from './section/Section';
-import Pagination from './pagination/index';
-import PagingTable from './pagingtable/index';
-import Move from './move/index';
-import ErrorBoundary from './_errorboundary/index';
-import Transfer from './transfer/Transfer';
-import Uploader from './uploader/index';
+import Alert from './alert';
+import Anchor from './_anchor';
+import Button from './button';
+import Checkbox from './checkbox';
+import Popconfirm from './popconfirm';
+import Icon from './_icon';
+import Mask from './_mask';
+import Messages from './messages';
+import Modal from './modal';
+import Confirm from './confirm';
+import Notification from './notification';
+import Input from './input';
+import Spin from './spin';
+import Switch from './_switch';
+import Table from './table';
+import Tabs from './tabs';
+import Slider from './slider';
+import Modalless from './modalless';
+import Cascader from './cascader';
+import Tooltip from './tooltip';
+import Collapse from './collapse';
+import Popover from './popover';
+import Tag from './tag';
+import Layout from './layout';
+import Grid from './grid';
+import Section from './section';
+import Pagination from './pagination';
+import PagingTable from './pagingtable';
+import Radio from './radio';
+import Move from './move';
+import ErrorBoundary from './_errorboundary';
+import Transfer from './transfer';
+import Uploader from './uploader';
+import Dropdown from './dropdown';
 
 export {
     Alert,
@@ -54,6 +56,7 @@ export {
     PagingTable,
     Popconfirm,
     Popover,
+    Radio,
     Section,
     Slider,
     Spin,
@@ -63,5 +66,6 @@ export {
     Tag,
     Tooltip,
     Transfer,
-    Uploader
+    Uploader,
+    Dropdown
 }

@@ -6,10 +6,9 @@
     z-index 10000
     left 50%
     transform translateX(-50%)
-    border-radius $border-radius-base
-    
+
 .{$jd-prefix}-messages--animated
-  
+
     margin-bottom: 10px;
     animation-duration: 0.3s
     color rgba(0,0,0,.85)
@@ -31,33 +30,51 @@
         opacity 0.6
     
 .{$jd-prefix}-messages__msg
-    padding 10px
+    padding 10px 20px
     font-size $font-size-base
     text-align center
     font-family $font-family
     background #fff
+    border-radius $border-radius-base
     display inline-block
-    word-wrap: break-word;
-    box-shadow 0 2px 8px rgba(0,0,0,0.2)
-
+    word-wrap break-word
+    color $normal-2
+    box-shadow 0 0 6px 0 rgba(0,0,0,0.2)
 
 .{$jd-prefix}-messages__icon--info
     margin-right 10px
     color $primary-normal
+    font-size $font-size-lg
+    text-align center
+    position relative
+    top 2px
 
 .{$jd-prefix}-messages__icon--success
     margin-right 10px
     color $success-color
+    font-size $font-size-lg
+    text-align center
+    position relative
+    top 2px
 
 .{$jd-prefix}-messages__icon--warning
     margin-right 10px
     color $warning-color
-    font-size 12px
+    font-size $font-size-lg
+    text-align center
+    position relative !important
+    top 2px
 
 .{$jd-prefix}-messages__icon--error
     margin-right 10px
     color $error-color
+    font-size $font-size-lg
+    text-align center
+    position relative
+    top 2px
 
 .{$jd-prefix}-messages__icon--loading
     margin-right 10px
     color $primary-normal
+    font-size $font-size-lg
+    text-align center

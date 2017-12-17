@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Tooltip from '../tooltip/Tooltip';
 import { cloneElement } from 'react';
@@ -6,36 +6,33 @@ import Button from '../button';
 import Icon from '../_icon';
 import { GENERAL } from '../_util/text';
 
-class Popconfirm extends React.PureComponent {
+export default class Popconfirm extends (PureComponent || Component) {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            visible: false,
-        }
-    }
-
-    render() {
-        const { children, getContainer } = this.props;
-        const newChildProps = {};
-        newChildProps.onClick = this._showPopconfirm;
-        return (
-            <Tooltip 
-              prefixCls="jd-popconfirm"
-              overlay={ this._getOverlay() }
-              visible={ this.state.visible }
-              placement={this.props.placement}
-              animatedName={this.props.animatedName}
-              onClose={this._onTooltipClose}
-              getContainer={getContainer} >
-                { cloneElement(children, newChildProps) }
-            </Tooltip>
-        );
-    }
+    state = { visible: false };
+    static propTypes = {
+        prefix: PropTypes.string,
+        title: PropTypes.string.isRequired,
+        onCancel: PropTypes.func,
+        onOk: PropTypes.func,
+        okText: PropTypes.string,
+        cancelText: PropTypes.string,
+        /**
+         * 弹出框位置，位置可选， 默认top
+         * top left right bottom topLeft topRight bottomLeft
+         * bottomRight leftTop leftBottom rightTop rightBottom
+         */
+        placement: PropTypes.string,
+        animatedName: PropTypes.string,
+        getContainer: PropTypes.func,
+    };
+    static defaultProps = {
+        prefix: 'jd'
+    };
 
     _getOverlay = () => {
+        const { prefix } = this.props;
         return (
-            <div className="jd-confirm__content">
+            <div className={`${prefix}-confirm__content`}>
                 { this._getMessage() }
                 { this._getFooter() }
             </div>
@@ -43,11 +40,11 @@ class Popconfirm extends React.PureComponent {
     }
 
     _getMessage = () => {
-        const { title } = this.props;
+        const { title,prefix } = this.props;
         return (
-            <div className="jd-confirm__innerMessage">
-                <Icon name={'info-circle'} className="jd-icon-warning-down-O" />
-                <div className="jd-confirm__msg">
+            <div className={`${prefix}-confirm__innerMessage`}>
+                <Icon name={'info-circle'} className={`${prefix}-icon-warning-down-O`} />
+                <div className={`${prefix}-confirm__msg`}>
                     { title }
                 </div>
             </div>
@@ -55,14 +52,16 @@ class Popconfirm extends React.PureComponent {
     }
 
     _getFooter = () => {
-        const { okText, cancelText} = this.props;
+        const { okText, cancelText,prefix} = this.props;
         return (
-            <div className={"jd-confirm__footer"}>
+            <div className={`${prefix}-confirm__footer`}>
                 <Button
+                    size="small"
                     onClick={this._cancelClose}>
-                   {cancelText || GENERAL.CANCEL}
+                    {cancelText || GENERAL.CANCEL}
                 </Button>
                 <Button
+                    size="small"
                     type="primary"
                     onClick={this._okClose}>
                     {okText || GENERAL.CONFIRM}
@@ -83,7 +82,7 @@ class Popconfirm extends React.PureComponent {
         });
         const onCancel = this.props.onCancel;
         if (onCancel){
-             onCancel();
+            onCancel();
         }
     }
 
@@ -104,48 +103,23 @@ class Popconfirm extends React.PureComponent {
         })
     }
 
-
+    render() {
+        const { children, getContainer, prefix } = this.props;
+        const newChildProps = {};
+        newChildProps.onClick = this._showPopconfirm;
+        return (
+            <Tooltip 
+              prefixCls={`${prefix}-popconfirm`}
+              overlay={ this._getOverlay() }
+              visible={ this.state.visible }
+              placement={this.props.placement}
+              animatedName={this.props.animatedName}
+              onClose={this._onTooltipClose}
+              getContainer={getContainer} >
+                { cloneElement(children, newChildProps) }
+            </Tooltip>
+        );
+    }
 }
 
-Popconfirm.defaultProps = {
 
-}
-
-Popconfirm.propTypes = {
-    /**
-    * 提示内容
-    */
-    title: PropTypes.string.isRequired,
-    /**
-    * 关闭时触发的回调函数
-    */
-    onCancel: PropTypes.func,
-    /**
-    * 点击确定回调函数
-    */
-    onOk: PropTypes.func,
-    /**
-    * 确认文字
-    */
-    okText: PropTypes.string,
-    /**
-    * 取消文字
-    */
-    cancelText: PropTypes.string,
-    /**
-    * 弹出框位置，位置可选， 默认top
-    * top left right bottom topLeft topRight bottomLeft 
-    * bottomRight leftTop leftBottom rightTop rightBottom
-    */
-    placement: PropTypes.string,
-    /**
-    * 动画名称
-    */ 
-    animatedName: PropTypes.string,
-    /**
-    * 浮层渲染父节点，默认渲染到 body 上
-    */ 
-    getContainer: PropTypes.func, 
-};
-
-export default Popconfirm;

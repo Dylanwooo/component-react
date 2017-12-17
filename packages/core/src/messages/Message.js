@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, PureComponent} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {getContainer} from '../_util/common';
@@ -7,32 +7,72 @@ import Notice from './Notice';
 let seed = 0;
 const now = Date.now();
 
-class Message extends React.PureComponent {
+class Message extends (PureComponent || Component) {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            notices: [],
-        };
+    state = { notices: [] };
+
+    static propTypes = {
+        prefix: PropTypes.string,
+        /**
+         * message距离顶部的高度
+         */
+        top: PropTypes.string,
+        /**
+         * 是否显示右上角的关闭按钮
+         */
+        closable: PropTypes.bool,
+        /**
+         * 指定notice提示的样式
+         *有四种选择 success、info、warning、error
+         */
+        type: PropTypes.string,
+        /**
+         * 固定类名
+         */
+        prefixCls: PropTypes.string,
+        /**
+         * 移除当前message
+         */
+        onRemove: PropTypes.func,
+        /**
+         * 关闭时的回调函数
+         */
+        onClose: PropTypes.func,
+        /**
+         * message内容
+         */
+        message: PropTypes.string,
+        /**
+         * message持续秒数，单位为ms
+         */
+        duration: PropTypes.number,
     }
+    static defaultProps = {
+        top: '24px',
+        closable: true,
+        prefix: 'jd'
+    };
+
 
     render() {
-        const baseName = 'jd-message';
+        const { prefix } = this.props;
+        const baseName = `${prefix}-message`;
         const {top} = this.props;
         return (
-            <div className="jd-messages" style={{top: top}}>
+            <div className={`${prefix}-messages`} style={{top: top}}>
                 {this._getNoticeNodes()}
             </div>
         )
     }
 
     _getNoticeNodes() {
+        const { prefix } = this.props;
         const noticeNodes = this.state.notices.map((notice) => {
             const onRemove = () => {
                 this._remove(notice.key)
             };
             return (<Notice
-                prefixCls="jd-messages"
+                prefixCls={`${prefix}-messages`}
                 key={notice.key}
                 type={notice.type}
                 message={notice.message}
@@ -94,47 +134,6 @@ function notice(message, duration = 3000, type, onClose) {
             Instance._remove(target)
         }
     })()
-}
-
-Message.defaultProps = {
-    top: '24px',
-    closable: true,
-};
-
-Message.propTypes = {
-    /**
-     * message距离顶部的高度
-     */
-    top: PropTypes.string,
-    /**
-     * 是否显示右上角的关闭按钮
-     */
-    closable: PropTypes.bool,
-    /**
-     * 指定notice提示的样式
-     *有四种选择 success、info、warning、error
-     */
-    type: PropTypes.string,
-    /**
-     * 固定类名
-     */
-    prefixCls: PropTypes.string,
-    /**
-     * 移除当前message
-     */
-    onRemove: PropTypes.func,
-    /**
-     * 关闭时的回调函数
-     */
-    onClose: PropTypes.func,
-    /**
-     * message内容
-     */
-    message: PropTypes.string,
-    /**
-     * message持续秒数，单位为ms
-     */
-    duration: PropTypes.number,
 }
 
 export default {

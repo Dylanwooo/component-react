@@ -1,7 +1,6 @@
 @import "common/var.styl";
 @import "mixins/mixins.styl";
 
-
 .{$jd-prefix}-button
   display inline-block
   padding 5px 10px
@@ -17,8 +16,11 @@
   line-height $line-height-base
   color $normal-2
 
+  .{$jd-prefix}-icon
+    margin-right 9px
+    color $normal-3
 
-  + .{$jd-prefix}-button
+  & + .{$jd-prefix}-button
     margin-left 10px
 
   &--primary
@@ -48,6 +50,7 @@
         color $primary-hover
 
     &:focus
+      outline: none
       transition: all .3s;
       color $primary-click
       border-color $primary-click
@@ -84,10 +87,11 @@
     border-color $primary-normal
     color $primary-normal
   &:focus
+    outline none
     transition: all .3s;
     color $primary-click
     border-color $primary-click
-
+    background-color: $normal-white
 
 .{$jd-prefix}-button--disabled
   cursor not-allowed
@@ -97,7 +101,6 @@
 
   .{$jd-prefix}-icon
     color $normal-4 !important
-
 
 .{$jd-prefix}-button--default
   width auto
@@ -112,7 +115,5 @@
       color $primary-click
 
 
-.{$jd-prefix}-icon
-  margin-right 9px
-  color $normal-3
+
 

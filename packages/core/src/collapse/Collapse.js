@@ -1,10 +1,9 @@
-import React, {Children} from 'react';
+import React, { Component, PureComponent, Children } from 'react';
 import PropTypes from 'prop-types';
 import CollapsePanel from './Panel';
 import classNames from 'classnames';
 
-
-class Collapse extends React.PureComponent {
+class Collapse extends (PureComponent || Component) {
 
     constructor(props) {
         super(props);
@@ -19,6 +18,51 @@ class Collapse extends React.PureComponent {
             activeKey: this._toArray(currentActiveKey),
         };
     }
+    static propTypes = {
+        /**
+         * [defaultActiveKey description]
+         * @type {[array, string]}
+         * 初始化选中面板的 key
+         */
+        defaultActiveKey: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+        /**
+         * [activeKey description]
+         * @type {[array, string]}
+         * 当前激活 tab 面板的 key
+         */
+        activeKey: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+        /**
+         * [onChange description]
+         * @type {[function]}
+         * 切换面板的回调
+         */
+        onChange: PropTypes.func,
+        /**
+         * [style description]
+         * @type {[object]}
+         * 样式
+         */
+        style: PropTypes.object,
+        /**
+         * [className description]
+         * @type {[string]}
+         * class名
+         */
+        className: PropTypes.string,
+        /**
+         * [accordion description]
+         * @type {[bool]}
+         * 手风琴
+         */
+        accordion: PropTypes.bool,
+    };
+
+
+    static defaultProps = {
+        prefixCls: 'jd-collapse',
+        onChange() {},
+        accordion: false
+    }
 
     componentWillReceiveProps(nextProps) {
 
@@ -27,21 +71,6 @@ class Collapse extends React.PureComponent {
                 activeKey: this._toArray(nextProps.activeKey),
             });
         }
-    }
-
-
-    render() {
-        const { prefixCls, className } = this.props;
-        const collapseClassName = classNames({
-            [prefixCls]: true,
-            [className]: !!className,
-        });
-
-        return (
-            <div className={collapseClassName}>
-                {this._getItems()}
-            </div>
-        );
     }
 
     _toArray = (activeKey) => {
@@ -116,53 +145,21 @@ class Collapse extends React.PureComponent {
         this.props.onChange(this.props.accordion ? activeKey[0] : activeKey);
     }
 
-}
+    render() {
+        const { prefixCls, className } = this.props;
+        const collapseClassName = classNames({
+            [prefixCls]: true,
+            [className]: !!className,
+        });
 
-Collapse.defaultProps = {
-    prefixCls: 'jd-collapse',
-    onChange() {},
-    accordion: false
+        return (
+            <div className={collapseClassName}>
+                {this._getItems()}
+            </div>
+        );
+    }
 }
-
-Collapse.propTypes = {
-    /**
-     * [defaultActiveKey description]
-     * @type {[array, string]}
-     * 初始化选中面板的 key
-     */
-    defaultActiveKey: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-    /**
-     * [activeKey description]
-     * @type {[array, string]}
-     * 当前激活 tab 面板的 key
-     */
-    activeKey: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-    /**
-     * [onChange description]
-     * @type {[function]}
-     * 切换面板的回调
-     */
-    onChange: PropTypes.func,
-    /**
-     * [style description]
-     * @type {[object]}
-     * 样式
-     */
-    style: PropTypes.object,
-    /**
-     * [className description]
-     * @type {[string]}
-     * class名
-     */
-    className: PropTypes.string,
-    /**
-     * [accordion description]
-     * @type {[bool]}
-     * 手风琴
-     */
-    accordion: PropTypes.bool,
-};
 
 Collapse.Panel = CollapsePanel;
-export const Panel = Collapse.Panel;
 export default Collapse;
+export const Panel = Collapse.Panel;

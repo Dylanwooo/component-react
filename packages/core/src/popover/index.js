@@ -1,17 +1,11 @@
-import React from 'react';
+import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Tooltip from '../tooltip/Tooltip';
 import { cloneElement } from 'react';
 
-class Popover extends React.PureComponent {
+export default class Popover extends (PureComponent || Component) {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            visible: true,
-        }
-    }
-
+    state = { visible: true };
     componentDidMount () {
         const newChildProps = this._handleTrigger();
         this.newChildProps = newChildProps;
@@ -20,6 +14,32 @@ class Popover extends React.PureComponent {
         })
     }
 
+    _handleTrigger = () => {
+        const { trigger } = this.props;
+        const newChildProps = {};
+
+        if ( trigger === 'click' ) {
+            newChildProps.onClick = this._showPopover;
+
+        } else if ( trigger === 'hover' ) {
+            newChildProps.onMouseEnter = this._showPopover;
+            newChildProps.onMouseOut = this._hidePopover;
+        }
+        return newChildProps;
+    };
+
+    _showPopover = (event) => {
+
+        this.setState({
+            visible: true
+        })
+    };
+
+    _hidePopover = (event) => {
+        this.setState({
+            visible: false
+        })
+    }
     render() {
         const { children, content, placement, getContainer } = this.props;
         const newChildProps = this.newChildProps;
@@ -35,34 +55,6 @@ class Popover extends React.PureComponent {
             </Tooltip>
         );
     }
-
-    _handleTrigger = () => {
-        const { trigger } = this.props;
-        const newChildProps = {};
- 
-        if ( trigger === 'click' ) {
-            newChildProps.onClick = this._showPopover;
-
-        } else if ( trigger === 'hover' ) {
-            newChildProps.onMouseEnter = this._showPopover;
-            newChildProps.onMouseOut = this._hidePopover;
-        }
-        return newChildProps;
-    };
-
-    _showPopover = (event) => {
-    
-        this.setState({
-            visible: true
-        })
-    };
-
-    _hidePopover = (event) => {
-        this.setState({
-            visible: false
-        })
-    }
-
 
 }
 
@@ -98,5 +90,3 @@ Popover.propTypes = {
     */ 
     getContainer: PropTypes.func,
 };
-
-export default Popover;

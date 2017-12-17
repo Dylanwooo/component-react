@@ -34,6 +34,8 @@
 
     &:focus
       border-color: $border-color-focus
+      -webkit-box-shadow: 0 0 0 2px rgba(91, 180, 251, 0.1);
+      box-shadow: 0 0 0 2px rgba(91, 180, 251, 0.1);
       transition: all .3s;
 
   .{$jd-prefix}-input-suffix
@@ -65,6 +67,17 @@
     font-size: $font-size-base;
     box-sizing border-box
 
+    &:hover
+      border-color: $border-color-hover
+      transition: all .3s;
+
+    &:focus
+      border-color: $border-color-focus
+      -webkit-box-shadow: 0 0 0 2px rgba(91, 180, 251, 0.1);
+      box-shadow: 0 0 0 2px rgba(91, 180, 251, 0.1);
+      transition: all .3s;
+
+
 .{$jd-prefix}-input-wrapper__not-editable
   .{$jd-prefix}-input
     cursor: not-allowed
@@ -74,3 +87,12 @@
     &:hover
       border-color: $border-color-base
 
+    &:focus
+      border-color: $border-color-base
+
+textarea
+  &:focus
+    outline 0
+input
+  &:focus
+    outline 0

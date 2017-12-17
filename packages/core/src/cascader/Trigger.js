@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { cloneElement } from 'react';
 import arrayTreeFilter from 'array-tree-filter';
@@ -7,7 +7,7 @@ import Menu from './Menu';
 
 import Tooltip from '../tooltip';
 
-class Trigger extends React.PureComponent {
+export default class Trigger extends (PureComponent || Component) {
 
     constructor(props) {
         super(props);
@@ -24,6 +24,79 @@ class Trigger extends React.PureComponent {
             value: initialValue,
         };
     }
+
+    static defaultProps = {
+        prefix: 'jd'
+    }
+
+    static propTypes = {
+        prefix: PropTypes.string,
+        /**
+         * [options description]
+         * @type {[array]}
+         * 级联框可选项数据源
+         *      @param {String} value
+         *      @param {String} label
+         *      @param {array} children
+         *      @param {bool} disabled
+         *      @param {bool} isLeaf
+         */
+        options: PropTypes.array,
+        /**
+         * [defaultValue description]
+         * @type {[array]}
+         * 默认选中项
+         */
+        defaultValue: PropTypes.array,
+        /**
+         * [value description]
+         * @type {[array]}
+         * 指定选中项
+         */
+        value: PropTypes.array,
+        /**
+         * [popupVisible description]
+         * @type {[bool]}
+         * 级联框是否可见
+         */
+        popupVisible: PropTypes.bool,
+        /**
+         * [onChange description]
+         * @type {[function]}
+         * 选择可选项后的回调
+         */
+        onChange: PropTypes.func,
+        /**
+         * [onClick description]
+         * @type {[function]}
+         * 关闭级联框的回调
+         */
+        onClick: PropTypes.func,
+        /**
+         * [placement description]
+         * @type {[string]}
+         * 浮层预设位置：bottomLeft bottomRight topLeft topRight
+         */
+        placement: PropTypes.string,
+        /**
+         * [loadData description]
+         * @type {[function]}
+         * 用于动态加载选项
+         */
+        loadData: PropTypes.func,
+        /**
+         * [object description]
+         * @type {[object]}
+         * 级联框的domAlign位置控制对象
+         */
+        builtinPlacements: PropTypes.object,
+        /**
+         * [getContainer description]
+         * @type {[function]}
+         * 浮层渲染父节点，默认渲染到 body 上
+         */
+        getContainer: PropTypes.func,
+    };
 
     componentWillReceiveProps(nextProps) {
         if ('value' in nextProps && !shallowEqualArrays(this.props.value, nextProps.value)) {
@@ -47,32 +120,13 @@ class Trigger extends React.PureComponent {
         }
     }
 
-    render() {
-        const { children, placement, builtinPlacements, onClick, getContainer } = this.props;
-
-        return (
-            <Tooltip 
-              prefixCls="jd-cascader"
-              overlay={ this._getOverlay() }
-              visible={ this.state.popupVisible}
-              placement={placement}
-              builtinPlacements={builtinPlacements}
-              onClose={onClick}
-              getContainer={getContainer}
-              >
-                { cloneElement(children) }
-            </Tooltip>
-        );
-    }
-
-
     _getOverlay = () => {
         const props = this.props;
         const { popupVisible, activeValue } = this.state;
 
         return (
             <div>
-                <Menu 
+                <Menu
                     {...props}
                     visible={popupVisible}
                     activeValue={ activeValue }
@@ -92,11 +146,11 @@ class Trigger extends React.PureComponent {
         if (!targetOption || targetOption.disabled) {
             return;
         }
-        
+
         activeValue = activeValue.slice(0, menuIndex + 1);
         activeValue[menuIndex] = targetOption.value;
         const activeOptions = this._getActiveOptions(activeValue);
-       
+
         // 需要loadData时
         if (targetOption.isLeaf === false && !targetOption.children && loadData) {
             if (changeOnSelect) {
@@ -105,7 +159,7 @@ class Trigger extends React.PureComponent {
             this.setState({ activeValue });
             loadData(activeOptions);
             return;
-        }    
+        }
 
         const newState = {};
         if (!targetOption.children || !targetOption.children.length) {
@@ -124,7 +178,7 @@ class Trigger extends React.PureComponent {
             (e.type === 'keydown' && e.keyCode !== KeyCode.ENTER)) {
             delete newState.value;
         }
-        this.setState(newState);    
+        this.setState(newState);
     }
 
     _getActiveOptions = (activeValue) => {
@@ -143,7 +197,7 @@ class Trigger extends React.PureComponent {
         if (!('popupVisible' in this.props)) {
             this.setState({ popupVisible });
         }
-   
+
         // sync activeValue with value when panel open
         if (popupVisible) {
             this.setState({
@@ -153,80 +207,24 @@ class Trigger extends React.PureComponent {
 
         // close menu
         this.props.onClick();
-      
+
+    }
+
+    render() {
+        const { prefix,children, placement, builtinPlacements, onClick, getContainer } = this.props;
+
+        return (
+            <Tooltip 
+              prefixCls={`${prefix}-cascader`}
+              overlay={ this._getOverlay() }
+              visible={ this.state.popupVisible}
+              placement={placement}
+              builtinPlacements={builtinPlacements}
+              onClose={onClick}
+              getContainer={getContainer}
+              >
+                { cloneElement(children) }
+            </Tooltip>
+        );
     }
 }
-
-Trigger.defaultProps = {
-
-}
-
-Trigger.propTypes = {
-    /**
-     * [options description]
-     * @type {[array]}
-     * 级联框可选项数据源
-     *      @param {String} value
-     *      @param {String} label
-     *      @param {array} children
-     *      @param {bool} disabled
-     *      @param {bool} isLeaf
-     */
-    options: PropTypes.array,
-    /**
-     * [defaultValue description]
-     * @type {[array]}
-     * 默认选中项
-     */
-    defaultValue: PropTypes.array,
-    /**
-     * [value description]
-     * @type {[array]}
-     * 指定选中项
-     */
-    value: PropTypes.array,
-    /**
-     * [popupVisible description]
-     * @type {[bool]}
-     * 级联框是否可见
-     */
-    popupVisible: PropTypes.bool,
-    /**
-     * [onChange description]
-     * @type {[function]}
-     * 选择可选项后的回调
-     */
-    onChange: PropTypes.func,
-    /**
-     * [onClick description]
-     * @type {[function]}
-     * 关闭级联框的回调
-     */
-    onClick: PropTypes.func,
-    /**
-     * [placement description]
-     * @type {[string]}
-     * 浮层预设位置：bottomLeft bottomRight topLeft topRight
-     */
-    placement: PropTypes.string,
-    /**
-     * [loadData description]
-     * @type {[function]}
-     * 用于动态加载选项
-     */
-    loadData: PropTypes.func,
-    /**
-     * [object description]
-     * @type {[object]}
-     * 级联框的domAlign位置控制对象
-     */
-    builtinPlacements: PropTypes.object,
-    /**
-     * [getContainer description]
-     * @type {[function]}
-     * 浮层渲染父节点，默认渲染到 body 上
-     */
-    getContainer: PropTypes.func,
-};
-
-export default Trigger;
